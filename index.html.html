@@ -361,7 +361,27 @@
 
                             <div class="md:col-span-2">
                                 <label class="block text-xs font-bold text-gray-300 mb-1">رابط صورة المنتج (Image URL) *</label>
-                                <input type="url" id="admin-prod-image" required placeholder="https://images.unsplash.com/..." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                                <div class="md:col-span-2">
+    <label class="block text-xs font-bold text-gray-300 mb-1">
+        صورة المنتج من الجهاز *
+    </label>
+
+    <input
+        type="file"
+        id="admin-prod-image-file"
+        accept="image/*"
+        class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white"
+    >
+
+    <input
+        type="hidden"
+        id="admin-prod-image"
+    >
+
+    <p class="text-[10px] text-gray-500 mt-1">
+        اختر صورة من جهازك وسيتم رفعها تلقائياً إلى GitHub.
+    </p>
+</div>
                             </div>
 
                             <div class="md:col-span-3">
@@ -1408,16 +1428,87 @@
                 activeBtn.classList.add('text-rocket-red', 'border-b-2', 'border-rocket-red');
             }
         }
+async function uploadImageToGitHub(file, folder = 'images') {
+    if (!file) return '';
 
-        function handleProductSubmit(e) {
+    const { ghOwner, ghRepo, ghBranch, ghToken } = state.storeSettings;
+
+    if (!ghOwner || !ghRepo || !ghToken) {
+        throw new Error("إعدادات GitHub غير مكتملة");
+    }
+
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-');
+    const fileName = `${Date.now()}-${safeName}`;
+    const path = `${folder}/${fileName}`;
+
+    const buffer = await file.arrayBuffer();
+
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+
+    const chunkSize = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+        binary += String.fromCharCode(
+            ...bytes.subarray(i, i + chunkSize)
+        );
+    }
+
+    const content = btoa(binary);
+
+    const response = await fetch(
+        `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${path}`,
+        {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${ghToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: `Upload image: ${fileName}`,
+                content: content,
+                branch: ghBranch || 'main'
+            })
+        }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(result.message || 'فشل رفع الصورة');
+    }
+
+    return result.content.download_url;
+}
+        async function handleProductSubmit(e) {
             e.preventDefault();
             const id = document.getElementById('admin-prod-id').value;
             const title = document.getElementById('admin-prod-title').value.trim();
             const category = document.getElementById('admin-prod-category').value;
             const price = parseFloat(document.getElementById('admin-prod-price').value) || 0;
             const badge = document.getElementById('admin-prod-badge').value.trim();
-            const image = document.getElementById('admin-prod-image').value.trim();
-            const desc = document.getElementById('admin-prod-desc').value.trim();
+let image = document.getElementById('admin-prod-image').value.trim();
+const imageFile = document.getElementById('admin-prod-image-file').files[0];
+const desc = document.getElementById('admin-prod-desc').value.trim();
+
+try {
+    if (imageFile) {
+        showToast("جاري رفع صورة المنتج إلى GitHub... ⏳");
+        image = await uploadImageToGitHub(imageFile, 'images/products');
+
+        document.getElementById('admin-prod-image').value = image;
+    }
+
+    if (!image) {
+        showToast("من فضلك اختر صورة للمنتج!");
+        return;
+    }
+} catch (err) {
+    console.error("Image upload error:", err);
+    showToast("فشل رفع صورة المنتج: " + err.message);
+    return;
+}
+            
+            
 
             if (id) {
                 const index = state.products.findIndex(p => p.id === id);
