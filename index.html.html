@@ -1446,7 +1446,23 @@
                 console.error("Products save error:", e);
             }
         }
+function saveProducts() {
+    try {
+        localStorage.setItem('rocket_products', JSON.stringify(state.products));
+        
+        if (state.storeSettings.ghToken) {
+            syncToGitHub(false);
+        }
 
+        renderProducts();
+        renderAdminTable();
+
+        showToast("تم حفظ المنتجات بنجاح 🚀");
+    } catch (e) {
+        console.error("Product save error:", e);
+        showToast("حدث خطأ أثناء حفظ المنتج!");
+    }
+}
         function saveAdminSettings() {
             const formspreeUrl = document.getElementById('setting-formspree-url').value.trim();
             const whatsappNum = document.getElementById('setting-whatsapp-num').value.trim();
