@@ -512,7 +512,147 @@
                         </div>
                     </div>
                 </div>
+                <!-- ADMIN TAB: GITHUB AUTO-SYNC -->
+<div id="admin-tab-github" class="hidden space-y-6">
+    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
 
+        <div class="flex items-center gap-3 border-b border-rocket-gray pb-4">
+            <div class="w-10 h-10 rounded-xl bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-xl">
+                <i class="fa-brands fa-github"></i>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-white">
+                    إعدادات المزامنة التلقائية مع GitHub Pages
+                </h3>
+
+                <p class="text-xs text-gray-400">
+                    ربط المتجر بـ GitHub API لتحديث الكود والمنتجات مباشرة في المستودع أونلاين
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-rocket-black/80 p-4 rounded-xl border border-rocket-red/30 space-y-2 text-xs text-gray-300 leading-relaxed">
+            <p class="font-bold text-white text-sm">
+                <i class="fa-solid fa-lightbulb text-rocket-red ml-1"></i>
+                كيف تعمل المزامنة التلقائية؟
+            </p>
+
+            <p>
+                عند إدخال بيانات GitHub ورمز الوصول الخاص بك (Personal Access Token)،
+                سيقوم المتجر بتحديث ملف
+                <code class="text-rocket-red">index.html</code>
+                في مستودعك تلقائياً عند إضافة أو تعديل أي منتج.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم المستخدم على GitHub (Username / Owner) *
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-owner"
+                    placeholder="مثال: elsaideltran"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم المستودع (Repository Name) *
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-repo"
+                    placeholder="مثال: the-rocket-store"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم الفرع (Branch Name)
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-branch"
+                    value="main"
+                    placeholder="main أو master"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    مسار الملف بالمتجر (File Path)
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-path"
+                    value="index.html"
+                    placeholder="index.html"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-rocket-red mb-1">
+                    رمز الوصول الخاص (GitHub Personal Access Token - PAT) *
+                </label>
+
+                <input
+                    type="password"
+                    id="setting-gh-token"
+                    placeholder="GitHub Token"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono tracking-wider"
+                >
+
+                <p class="text-[11px] text-gray-400 mt-1">
+                    أدخل الـ Personal Access Token الخاص بحساب GitHub.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-rocket-gray">
+
+            <span id="gh-sync-status" class="text-xs font-bold text-gray-400">
+                حالة الربط: غير مفعل
+            </span>
+
+            <div class="flex items-center gap-3">
+
+                <button
+                    type="button"
+                    onclick="testGitHubConnection()"
+                    class="px-4 py-2.5 bg-rocket-gray hover:bg-rocket-gray/80 text-white font-bold text-xs rounded-xl border border-gray-600 transition-all"
+                >
+                    <i class="fa-solid fa-plug ml-1"></i>
+                    اختبار الاتصال
+                </button>
+
+                <button
+                    type="button"
+                    onclick="syncToGitHub(true)"
+                    id="btn-manual-sync"
+                    class="px-6 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-2"
+                >
+                    <i class="fa-brands fa-github text-sm"></i>
+                    مزامنة وحفظ التغييرات على GitHub الآن 🚀
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
                 <!-- ADMIN TAB 4: STATS -->
                 <div id="admin-tab-stats" class="hidden space-y-6">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
