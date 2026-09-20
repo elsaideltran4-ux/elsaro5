@@ -1737,6 +1737,176 @@ function saveProducts() {
         showToast("حدث خطأ أثناء حفظ المنتج!");
     }
 }
+        function saveGitHubInputs() {
+    state.storeSettings = {
+        ...state.storeSettings,
+        ghOwner: (document.getElementById('setting-gh-owner')?.value || '').trim(),
+        ghRepo: (document.getElementById('setting-gh-repo')?.value || '').trim(),
+        ghBranch: (document.getElementById('setting-gh-branch')?.value || 'main').trim(),
+        ghPath: (document.getElementById('setting-gh-path')?.value || 'index.html').trim(),
+        ghToken: (document.getElementById('setting-gh-token')?.value || '').trim()
+    };
+
+    localStorage.setItem(
+        'rocket_settings',
+        JSON.stringify(state.storeSettings)
+    );
+}
+
+async function testGitHubConnection() {
+    saveGitHubInputs();
+
+    const { ghOwner, ghRepo, ghToken } = state.storeSettings;
+
+    if (!ghOwner || !ghRepo || !ghToken) {
+        showToast("يرجى إدخال اسم المستخدم واسم المستودع والـ Token أولاً!");
+        return;
+    }
+
+    try {
+        const res = await fetch(
+            `https://api.github.com/repos/${ghOwner}/${ghRepo}`,
+            {
+                headers: {
+                    'Authorization': `token ${ghToken}`
+                }
+            }
+        );
+
+        if (res.ok) {
+            showToast("تم الاتصال بـ GitHub بنجاح! 🚀");
+            updateGitHubStatusUI();
+        } else {
+            showToast("فشل الاتصال بـ GitHub! تأكد من البيانات والـ Token.");
+        }
+
+    } catch (e) {
+        console.error(e);
+        showToast("حدث خطأ أثناء محاولة الاتصال بـ GitHub");
+    }
+}
+
+async function syncToGitHub(manualTrigger = false) {
+
+    saveGitHubInputs();
+
+    const {
+        ghOwner,
+        ghRepo,
+        ghBranch,
+        ghPath,
+        ghToken
+    } = state.storeSettings;
+
+    if (!ghOwner || !ghRepo || !ghToken) {
+        if (manualTrigger) {
+            showToast("يرجى ملء بيانات اتصال GitHub أولاً!");
+        }
+        return;
+    }
+
+    const syncBtn = document.getElementById('btn-manual-sync');
+
+    if (syncBtn) {
+        syncBtn.innerHTML =
+            '<i class="fa-solid fa-spinner animate-spin"></i> جاري المزامنة...';
+    }
+
+    try {
+
+        const fileUrl =
+            `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}?ref=${ghBranch}`;
+
+        const getRes = await fetch(fileUrl, {
+            headers: {
+                'Authorization': `token ${ghToken}`
+            }
+        });
+
+        if (!getRes.ok) {
+            throw new Error(
+                "لم نتمكن من الوصول لملف المتجر. تأكد من اسم المستودع ومسار الملف."
+            );
+        }
+
+        const fileData = await getRes.json();
+
+        const sha = fileData.sha;
+
+        let currentContent =
+            decodeURIComponent(
+                escape(
+                    atob(
+                        fileData.content.replace(/\n/g, '')
+                    )
+                )
+            );
+
+        const newProductsJSON =
+            JSON.stringify(state.products, null, 12);
+
+        const updatedContent =
+            currentContent.replace(
+                /const initialProducts = \[[\s\S]*?\];/,
+                `const initialProducts = ${newProductsJSON};`
+            );
+
+        const encodedContent =
+            btoa(
+                unescape(
+                    encodeURIComponent(updatedContent)
+                )
+            );
+
+        const putRes = await fetch(
+            `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${ghToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message:
+                        `🚀 auto-update store via Admin Panel [${new Date().toLocaleDateString('ar-EG')}]`,
+                    content: encodedContent,
+                    sha: sha,
+                    branch: ghBranch
+                })
+            }
+        );
+
+        if (putRes.ok) {
+
+            showToast(
+                "تم تحديث الكود والمنتجات بنجاح على GitHub! 🎉"
+            );
+
+        } else {
+
+            const errJson = await putRes.json();
+
+            showToast(
+                `خطأ أثناء المزامنة: ${errJson.message || 'فشل التحديث'}`
+            );
+        }
+
+    } catch (err) {
+
+        console.error("GitHub Sync Error:", err);
+
+        showToast(
+            `خطأ: ${err.message || 'تعذر المزامنة مع GitHub'}`
+        );
+
+    } finally {
+
+        if (syncBtn) {
+            syncBtn.innerHTML =
+                '<i class="fa-brands fa-github text-sm"></i> مزامنة وحفظ التغييرات على GitHub الآن 🚀';
+        }
+    }
+}
         function saveAdminSettings() {
             const formspreeUrl = document.getElementById('setting-formspree-url').value.trim();
             const whatsappNum = document.getElementById('setting-whatsapp-num').value.trim();
