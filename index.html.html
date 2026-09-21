@@ -1352,7 +1352,7 @@
 
         async function submitOrder(e) {
             e.preventDefault();
-            await finalizeOrder(false);
+            await finalizeOrder(true);
         }
 
         async function finalizeOrder(sendWhatsApp = false) {
