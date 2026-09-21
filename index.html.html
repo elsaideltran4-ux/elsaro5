@@ -1802,7 +1802,68 @@ try {
             renderAdminTable();
             renderProducts();
         }
+        function renderAdminTable() {
+    const table = document.getElementById('admin-products-table');
+    const countBadge = document.getElementById('prod-count-badge');
 
+    if (countBadge) {
+        countBadge.innerText = `${state.products.length} منتجات`;
+    }
+
+    if (!table) return;
+
+    if (!state.products.length) {
+        table.innerHTML = `
+            <tr>
+                <td colspan="5" class="p-8 text-center text-gray-400">
+                    لا توجد منتجات حالياً.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    table.innerHTML = state.products.map(p => `
+        <tr class="hover:bg-rocket-black/40">
+            <td class="p-4">
+                <div class="flex items-center gap-3">
+                    <img src="${p.image || ''}" alt="${p.title || ''}"
+                         class="w-12 h-12 rounded-lg object-cover bg-rocket-black border border-rocket-gray">
+                    <div>
+                        <div class="font-bold text-white">${p.title || ''}</div>
+                        <div class="text-[10px] text-gray-500 font-mono">${p.id || ''}</div>
+                    </div>
+                </div>
+            </td>
+
+            <td class="p-4 text-gray-300">${p.category || ''}</td>
+
+            <td class="p-4 text-rocket-red font-bold">
+                ${Number(p.price || 0).toLocaleString('ar-EG')} ج.م
+            </td>
+
+            <td class="p-4 text-xs text-gray-300">${p.badge || '—'}</td>
+
+            <td class="p-4">
+                <div class="flex items-center justify-center gap-2">
+
+                    <button type="button"
+                        onclick='editProduct(${JSON.stringify(p.id)})'
+                        class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold">
+                        <i class="fa-solid fa-pen"></i> تعديل
+                    </button>
+
+                    <button type="button"
+                        onclick='deleteProduct(${JSON.stringify(p.id)})'
+                        class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold">
+                        <i class="fa-solid fa-trash"></i> حذف
+                    </button>
+
+                </div>
+            </td>
+        </tr>
+    `).join('');
+}
         function editProduct(id) {
             const prod = state.products.find(p => p.id === id);
             if (!prod) return;
