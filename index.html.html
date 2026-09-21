@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="dark">
 <head>
@@ -80,7 +81,6 @@
                 <nav class="hidden md:flex items-center space-x-8 space-x-reverse font-bold text-sm">
                     <button onclick="navigateTo('home')" class="nav-link text-white hover:text-rocket-red transition-colors">الرئيسية</button>
                     <button onclick="navigateTo('shop')" class="nav-link text-gray-300 hover:text-rocket-red transition-colors">المنتجات والتصنيفات</button>
-                    <button onclick="navigateTo('strategy')" class="nav-link text-gray-300 hover:text-rocket-red transition-colors">خطة الإطلاق (Marketing)</button>
                     <button onclick="navigateTo('about')" class="nav-link text-gray-300 hover:text-rocket-red transition-colors">عن البراند</button>
                 </nav>
 
@@ -115,7 +115,6 @@
         <div id="mobile-menu" class="hidden md:hidden bg-rocket-card border-b border-rocket-gray/50 px-4 pt-3 pb-5 space-y-3">
             <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-right py-2 text-white font-semibold">الرئيسية</button>
             <button onclick="navigateTo('shop'); toggleMobileMenu();" class="block w-full text-right py-2 text-gray-300 font-semibold">المنتجات والتصنيفات</button>
-            <button onclick="navigateTo('strategy'); toggleMobileMenu();" class="block w-full text-right py-2 text-gray-300 font-semibold">خطة الإطلاق (Marketing)</button>
             <button onclick="navigateTo('about'); toggleMobileMenu();" class="block w-full text-right py-2 text-gray-300 font-semibold">عن البراند</button>
         </div>
     </header>
@@ -149,9 +148,6 @@
                                 <button onclick="navigateTo('shop')" class="px-8 py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transform hover:-translate-y-1 transition-all">
                                     تسوق التشكيلة الجديدة الان <i class="fa-solid fa-arrow-left mr-2"></i>
                                 </button>
-                                <button onclick="navigateTo('strategy')" class="px-6 py-4 bg-rocket-gray hover:bg-rocket-gray/80 text-white font-bold rounded-xl border border-gray-700 transition-all">
-                                    استكشف استراتيجية الإطلاق 🚀
-                                </button>
                             </div>
                         </div>
 
@@ -160,13 +156,6 @@
                             <div class="absolute -inset-1 bg-gradient-to-r from-rocket-red to-red-900 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
                             <div class="relative rounded-2xl overflow-hidden bg-rocket-card border border-rocket-gray shadow-2xl">
                                 <img id="hero-image" src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1000&q=80" alt="Streetwear Culture" class="w-full h-[420px] object-cover object-top hover:scale-105 transition-transform duration-700">
-                                <div class="absolute bottom-4 right-4 left-4 bg-rocket-black/80 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
-                                    <div>
-                                        <p class="text-xs text-rocket-red font-bold">الأكثر طلباً هذا الأسبوع</p>
-                                        <h4 class="font-bold text-white text-sm">Oversized Aero Hoodie</h4>
-                                    </div>
-                                    <span class="bg-rocket-red text-white text-xs font-black px-3 py-1.5 rounded-lg">شحن سريع</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,47 +225,6 @@
             </div>
         </section>
 
-        <section id="view-strategy" class="view-section hidden py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                <div class="text-center max-w-3xl mx-auto space-y-4">
-                    <span class="px-4 py-1.5 rounded-full bg-rocket-red/20 text-rocket-red text-xs font-black tracking-widest border border-rocket-red/30">EXECUTIVE MARKETING PLAN</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white">خطة التسويق المتكاملة لإطلاق المتجر</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        استراتيجية مجربة ومصممة خصيصاً لجذب فئة الشباب (20-35 سنة) المحبين للـ Streetwear والملابس الشبابية العصرية باستخدام الهوية البصرية الصارخة لـ <strong class="text-white">The Rocket</strong>.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-lg">
-                                <i class="fa-solid fa-sitemap"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">1. الهيكل التنظيمي لصفحات المتجر</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                            <li><strong class="text-white">الصفحة الرئيسية (Home):</strong> البانر المتحرك، أحدث Drops، الأقسام السريعة.</li>
-                            <li><strong class="text-white">صفحة المتجر (Catalog):</strong> تصفية المنتجات بالقياس واللون والنوع.</li>
-                            <li><strong class="text-white">تأكيد الطلب المباشر:</strong> ربط فوري مع Formspree للإيميل والواتساب.</li>
-                            <li><strong class="text-white">لوحة الأدمن (Admin Dashboard):</strong> تحكم بالمنتجات، الطلبات، وإعدادات Formspree.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-lg">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">2. نظام إرسال الطلبات المباشر</h3>
-                        </div>
-                        <p class="text-sm text-gray-300 leading-relaxed">
-                            يتضمن المتجر آلية إرسال فورية عبر <strong class="text-rocket-red">Formspree API</strong> لإرسال كل بضائع السلة وبيانات الزبون مباشرة لمكتب إيميلك، مع خاصية التحويل التلقائي للواتساب للعملاء الراغبين بالتأكيد المباشر.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="view-about" class="view-section hidden py-16">
             <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
                 <div class="w-20 h-20 rounded-2xl bg-rocket-red text-white text-4xl flex items-center justify-center mx-auto shadow-xl shadow-rocket-red/40">
@@ -300,12 +248,12 @@
                         </div>
                         <div>
                             <h2 class="text-2xl font-black text-white">لوحة التحكم السرية للمتجر (Admin Command Center)</h2>
-                            <p class="text-xs text-rocket-red font-semibold">تحكم كامل بالمنتجات، إعدادات Formspree الإيميل، ومتابعة الطلبات</p>
+                            <p class="text-xs text-rocket-red font-semibold">تحكم كامل بالمنتجات، الطلبات، Google Drive، وواتساب</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
                         <button onclick="saveAdminSettings()" class="px-5 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white text-xs font-bold rounded-xl transition-all shadow-md">
-                            <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ الإعدادات و Formspree
+                            <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ إعدادات المتجر والربط
                         </button>
                         <button onclick="navigateTo('home')" class="px-4 py-2.5 bg-rocket-gray hover:bg-rocket-gray/80 text-gray-300 text-xs font-bold rounded-xl border border-gray-600">
                             خروج للمتجر
@@ -320,10 +268,7 @@
                         طلبات العملاء
                         <span id="admin-orders-count" class="bg-rocket-red text-white text-[10px] px-2 py-0.5 rounded-full font-bold">0</span>
                     </button>
-                    <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap">تخصيص الهوية ورابط Formspree</button>
-                    <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap">
-    تخصيص البريد والإعدادات
-</button>
+                    <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap">تخصيص الهوية والبريد والإعدادات</button>
 
 <button onclick="switchAdminTab('github')" id="tab-btn-github" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap flex items-center gap-1.5">
     <i class="fa-brands fa-github text-rocket-red"></i> ربط GitHub التلقائي
@@ -386,7 +331,7 @@
     >
 
     <p class="text-[10px] text-gray-500 mt-1">
-        اختر صورة من جهازك وسيتم رفعها تلقائياً إلى GitHub.
+        اختر صورة من جهازك وسيتم حفظها مع بيانات المنتج.
     </p>
 </div>
                             </div>
@@ -435,9 +380,14 @@
                             <h3 class="font-bold text-white text-base flex items-center gap-2">
                                 <i class="fa-solid fa-cart-flatbed text-rocket-red"></i> قائمة الطلبات المستلمة
                             </h3>
-                            <button onclick="clearAllOrders()" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-trash"></i> مسح سجل الطلبات
-                            </button>
+                            <div class="flex items-center gap-2">
+                                <button onclick="syncOrdersFromCloud(true)" class="text-xs bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> تحديث من Google
+                                </button>
+                                <button onclick="clearAllOrders()" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-trash"></i> مسح سجل الطلبات
+                                </button>
+                            </div>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-right text-sm">
@@ -450,6 +400,7 @@
                                         <th class="p-4">المجموع</th>
                                         <th class="p-4">طريقة الدفع</th>
                                         <th class="p-4">الحالة</th>
+                                        <th class="p-4 text-center">واتساب</th>
                                         <th class="p-4 text-center">حذف</th>
                                     </tr>
                                 </thead>
@@ -462,57 +413,75 @@
                 </div>
 
                 <div id="admin-tab-settings" class="hidden space-y-6">
-                    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
-                        <div class="flex items-center gap-3 border-b border-rocket-gray pb-4">
-                            <div class="w-10 h-10 rounded-xl bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-lg">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">إعدادات الربط المباشر بـ Formspree والإيميل</h3>
-                                <p class="text-xs text-gray-400">ضع رابط Formspree Endpoint لتصلك تفاصيل الطلبات فوراً إلى إيميلك</p>
-                            </div>
-                        </div>
+    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
+        <div class="flex items-center gap-3 border-b border-rocket-gray pb-4">
+            <div class="w-10 h-10 rounded-xl bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white">إعدادات المتجر والطلبات</h3>
+                <p class="text-xs text-gray-400">رفع صورة الهيرو من الجهاز + حفظ الطلبات تلقائياً في Google Drive + إرسال واتساب.</p>
+            </div>
+        </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-rocket-red/30 space-y-2">
-                                <label class="block text-xs font-bold text-rocket-red">رابط Formspree Endpoint الخاص بك (Formspree Form URL) *</label>
-                                <input type="url" id="setting-formspree-url" placeholder="https://formspree.io/f/xknlqwzy" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
-                                <p class="text-[11px] text-gray-400">مثال: <code>https://formspree.io/f/xknlqwzy</code>. سجل بحساب مجاني في Formspree وافتح Form جديد ثم انسخ رابط الـ Endpoint هنا.</p>
-                            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">اسم المتجر / البراند</label>
+                <input type="text" id="setting-store-name" value="THE_ROCKET" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">عنوان الهيرو</label>
+                <input type="text" id="setting-hero-title" value="أطلق استايلك الخاطف" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-300 mb-1">الوصف الفرعي بالهيرو</label>
+                <input type="text" id="setting-hero-sub" value="تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
 
-                            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-rocket-gray space-y-2">
-                                <label class="block text-xs font-bold text-green-400">رقم الواتساب لاستقبال الطلبات مباشرة (مع رمز الدولة)</label>
-                                <input type="text" id="setting-whatsapp-num" placeholder="201000000000" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
-                                <p class="text-[11px] text-gray-400">مثال لمصر: <code>201012345678</code> بدون علامة +</p>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-gray-300 mb-1">اسم المتجر / البراند</label>
-                                <input type="text" id="setting-store-name" value="THE_ROCKET" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-gray-300 mb-1">عنوان الهيرو (Hero Title)</label>
-                                <input type="text" id="setting-hero-title" value="أطلق استايلك الخاطف" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
-                            </div>
-
-                            <div class="md:col-span-2">
-                                <label class="block text-xs font-bold text-gray-300 mb-1">الوصف الفرعي بالهيرو</label>
-                                <input type="text" id="setting-hero-sub" value="تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء بعمر 20-35 سنة." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
-                            </div>
-
-                            <div class="md:col-span-2">
-                                <label class="block text-xs font-bold text-gray-300 mb-1">رابط صورة الهيرو الرئيسية</label>
-                                <input type="url" id="setting-hero-img" value="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1000&q=80" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
-                            </div>
-                        </div>
-
-                        <div class="pt-4 flex justify-end">
-                            <button onclick="saveAdminSettings()" class="px-6 py-3 bg-rocket-red hover:bg-rocket-redHover text-white font-bold text-xs rounded-xl shadow-lg">حفظ إعدادات Formspree والواجهة</button>
-                        </div>
-                    </div>
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-rocket-gray space-y-3">
+                <label class="block text-xs font-bold text-rocket-red">صورة الهيرو من الجهاز</label>
+                <input type="file" id="setting-hero-file" accept="image/*" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white">
+                <input type="hidden" id="setting-hero-img">
+                <div class="flex items-center gap-4">
+                    <img id="hero-upload-preview" src="" alt="Hero preview" class="hidden w-32 h-20 object-cover rounded-xl border border-rocket-gray">
+                    <p class="text-[11px] text-gray-400">اختار الصورة من جهازك. سيتم ضغطها وحفظها داخل إعدادات المتجر، بدون كتابة رابط للصورة.</p>
                 </div>
-                <!-- ADMIN TAB: GITHUB AUTO-SYNC -->
+            </div>
+
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-green-500/30 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-google-drive text-green-400"></i>
+                    <h4 class="font-bold text-white">Google Drive / Google Sheets للطلبات</h4>
+                </div>
+                <label class="block text-xs font-bold text-gray-300">رابط Google Apps Script Web App</label>
+                <input type="url" id="setting-google-apps-url" placeholder="https://script.google.com/macros/s/....../exec" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
+                <p class="text-[11px] text-gray-400">هذا هو الرابط الذي سنستخدمه لحفظ كل طلب في Google Drive/Sheets وإرجاع الطلبات للوحة الإدارة.</p>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="testGoogleCloudConnection()" class="px-4 py-2 bg-rocket-gray hover:bg-gray-700 text-white text-xs font-bold rounded-xl border border-gray-600"><i class="fa-solid fa-plug ml-1"></i> اختبار الربط</button>
+                    <button type="button" onclick="syncOrdersFromCloud(true)" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-xl"><i class="fa-solid fa-arrows-rotate ml-1"></i> جلب الطلبات الآن</button>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-emerald-500/30 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <h4 class="font-bold text-white">واتساب</h4>
+                </div>
+                <label class="block text-xs font-bold text-gray-300">رقم واتساب استقبال الطلبات (برمز الدولة)</label>
+                <input type="text" id="setting-whatsapp-num" placeholder="2010xxxxxxxx" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
+                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                    <input type="checkbox" id="setting-auto-whatsapp" class="accent-emerald-500">
+                    <span>إظهار خيار إرسال الطلب مباشرة إلى واتساب أثناء إتمام الشراء</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+            <button onclick="saveAdminSettings()" class="px-6 py-3 bg-rocket-red hover:bg-rocket-redHover text-white font-bold text-xs rounded-xl shadow-lg">حفظ إعدادات المتجر والربط</button>
+        </div>
+    </div>
+</div>
+<!-- ADMIN TAB: GITHUB AUTO-SYNC -->
 <div id="admin-tab-github" class="hidden space-y-6">
     <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
 
@@ -669,9 +638,9 @@
                         </div>
 
                         <div class="p-6 bg-rocket-card rounded-2xl border border-rocket-gray/60 space-y-2">
-                            <span class="text-xs text-gray-400 font-bold">حالة الربط بالإيميل</span>
-                            <h3 id="stat-formspree-status" class="text-xl font-bold text-green-400">Formspree Ready ✉️</h3>
-                            <p class="text-[11px] text-gray-400">يتم إرسال النسخة الاحتياطية تلقائياً</p>
+                            <span class="text-xs text-gray-400 font-bold">حالة Google Cloud</span>
+                            <h3 id="stat-cloud-status" class="text-xl font-bold text-gray-300">غير مربوط</h3>
+                            <p class="text-[11px] text-gray-400">الطلبات المحفوظة في Google Drive / Sheets</p>
                         </div>
                     </div>
                 </div>
@@ -736,7 +705,7 @@
                 <!-- Summary inserted via JS -->
             </div>
 
-            <!-- Checkout Form linked with Formspree via JS -->
+            <!-- Checkout form: saves locally + Google Drive, with optional WhatsApp -->
             <form id="checkout-form" onsubmit="submitOrder(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-300 mb-1">الاسم الكامل *</label>
@@ -762,18 +731,13 @@
                     </select>
                 </div>
 
-               <div class="pt-2">
-    <button
-        type="submit"
-        id="submit-order-btn"
-        class="w-full py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transition-all text-sm flex items-center justify-center gap-2"
-    >
-        <i class="fa-brands fa-whatsapp text-lg"></i>
-        <span>تأكيد الطلب وإرساله عبر واتساب 🚀</span>
-    </button>
-</div>
-                    <button type="button" onclick="submitOrderViaWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all text-xs flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> أو أرسل الطلب مباشرة عبر الواتساب
+                <div class="pt-2 space-y-2">
+                    <button type="submit" id="submit-order-btn" class="w-full py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transition-all text-sm flex items-center justify-center gap-2">
+                        <span>تأكيد الطلب وحفظه في النظام 🚀</span>
+                    </button>
+                    
+                    <button type="button" id="checkout-whatsapp-btn" onclick="submitOrderViaWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all text-xs flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> تأكيد الطلب وإرساله عبر واتساب
                     </button>
                 </div>
             </form>
@@ -824,7 +788,7 @@
                 <ul class="space-y-2 text-xs">
                     <li><button onclick="navigateTo('home')" class="hover:text-white transition-colors">الرئيسية</button></li>
                     <li><button onclick="navigateTo('shop')" class="hover:text-white transition-colors">كافة المنتجات</button></li>
-                    <li><button onclick="navigateTo('strategy')" class="hover:text-white transition-colors">خطة التسويق الإستراتيجية</button></li>
+                    
                 </ul>
             </div>
 
@@ -851,7 +815,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 border-t border-rocket-gray/40 pt-6 text-center text-xs text-gray-500">
-            جميع الحقوق محفوظة © 2026 <strong>THE_ROCKET STREETWEAR</strong>. متصل بـ Formspree للإيميل المباشر.
+            جميع الحقوق محفوظة © 2026 <strong>THE_ROCKET STREETWEAR</strong>.
         </div>
     </footer>
 
@@ -948,8 +912,15 @@
                     "image": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80",
                     "badge": "LIMITED DROP",
                     "desc": "هودي ثقيل باللون الأحمر الناري الجريء مع خطوط عاكسة للضوء على الأكمام. تصميم عصري يعبر عن شخصية الشارع الحقيقية."
-          }
-];
+          }        ];
+
+        // ألوان افتراضية للمنتجات التي لا تحتوي على قائمة ألوان مخصصة.
+        // يمكن تخصيصها لاحقاً من بيانات المنتج.
+        initialProducts.forEach(product => {
+            if (!Array.isArray(product.colors) || product.colors.length === 0) {
+                product.colors = ['أسود', 'أبيض', 'أحمر'];
+            }
+        });
 
         // Secret Admin Clicks Counter
         let logoClickCount = 0;
@@ -975,12 +946,24 @@
                 name: 'THE_ROCKET',
                 heroTitle: 'أطلق استايلك الخاطف',
                 heroSub: 'تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء بعمر 20-35 سنة.',
-                heroImg: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1000&q=80',
-                formspreeUrl: '',
+                heroImg: '',
+                googleAppsScriptUrl: '',
                 whatsappNum: '201270373555',
+                autoWhatsApp: true,
                 adminPassword: '1234'
             })
         };
+
+        document.addEventListener('change', (event) => {
+            if (event.target && event.target.id === 'setting-hero-file') {
+                const file = event.target.files && event.target.files[0];
+                const preview = document.getElementById('hero-upload-preview');
+                if (!file || !preview) return;
+                const reader = new FileReader();
+                reader.onload = () => { preview.src = reader.result; preview.classList.remove('hidden'); };
+                reader.readAsDataURL(file);
+            }
+        });
 
         // Initialize App on DOM Loaded
         document.addEventListener('DOMContentLoaded', () => {
@@ -989,6 +972,8 @@
             updateCartUI();
             renderAdminTable();
             renderAdminOrders();
+            syncOrdersFromCloud(false);
+            setInterval(() => { if (!document.getElementById('view-admin')?.classList.contains('hidden')) syncOrdersFromCloud(false); }, 30000);
 
             // Hash direct navigation check
             checkHashRoute();
@@ -999,7 +984,7 @@
             const hash = window.location.hash.replace('#', '');
             if (hash === 'admin') {
                 promptAdminLogin();
-            } else if (['shop', 'strategy', 'about', 'home'].includes(hash)) {
+            } else if (['shop', 'about', 'home'].includes(hash)) {
                 navigateTo(hash);
             }
         }
@@ -1089,14 +1074,14 @@
             if (subEl) subEl.innerText = state.storeSettings.heroSub;
 
             const imgEl = document.getElementById('hero-image');
-            if (imgEl) imgEl.src = state.storeSettings.heroImg;
-
-            // Fill Admin Form Inputs
-            const sFormspree = document.getElementById('setting-formspree-url');
-            if (sFormspree) sFormspree.value = state.storeSettings.formspreeUrl || '';
+            if (imgEl && state.storeSettings.heroImg) imgEl.src = state.storeSettings.heroImg;
 
             const sWhatsapp = document.getElementById('setting-whatsapp-num');
             if (sWhatsapp) sWhatsapp.value = state.storeSettings.whatsappNum || '';
+            const sGoogle = document.getElementById('setting-google-apps-url');
+            if (sGoogle) sGoogle.value = state.storeSettings.googleAppsScriptUrl || '';
+            const sAutoWa = document.getElementById('setting-auto-whatsapp');
+            if (sAutoWa) sAutoWa.checked = state.storeSettings.autoWhatsApp !== false;
 
             const sName = document.getElementById('setting-store-name');
             if (sName) sName.value = state.storeSettings.name;
@@ -1105,7 +1090,15 @@
             const sSub = document.getElementById('setting-hero-sub');
             if (sSub) sSub.value = state.storeSettings.heroSub;
             const sImg = document.getElementById('setting-hero-img');
-            if (sImg) sImg.value = state.storeSettings.heroImg;
+            if (sImg) sImg.value = state.storeSettings.heroImg || '';
+            const preview = document.getElementById('hero-upload-preview');
+            if (preview && state.storeSettings.heroImg) { preview.src = state.storeSettings.heroImg; preview.classList.remove('hidden'); }
+
+            const cloudStat = document.getElementById('stat-cloud-status');
+            if (cloudStat) cloudStat.innerText = state.storeSettings.googleAppsScriptUrl ? 'مُعد ✓' : 'غير مربوط';
+
+            const waBtn = document.getElementById('checkout-whatsapp-btn');
+            if (waBtn) waBtn.classList.toggle('hidden', state.storeSettings.autoWhatsApp === false);
         }
 
         function renderProducts() {
@@ -1117,25 +1110,14 @@
                 : state.products.filter(p => p.category === state.activeCategory);
 
             const cardHTML = (p) => `
-                <div class="group bg-rocket-card border border-rocket-gray/60 rounded-2xl overflow-hidden hover:border-rocket-red/60 transition-all duration-300 flex flex-col justify-between">
-                    <div class="relative overflow-hidden cursor-pointer" onclick="openProductModal('${p.id}')">
+                <div class="group bg-rocket-card border border-rocket-gray/60 rounded-2xl overflow-hidden hover:border-rocket-red/60 transition-all duration-300 cursor-pointer" onclick="openProductModal('${p.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); openProductModal('${p.id}'); }">
+                    <div class="relative overflow-hidden">
                         ${p.badge ? `<span class="absolute top-3 right-3 z-10 bg-rocket-red text-white text-[10px] font-black px-2.5 py-1 rounded-md tracking-wider">${p.badge}</span>` : ''}
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-rocket-card via-transparent to-transparent opacity-60"></div>
-                    </div>
-
-                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] text-rocket-red font-bold uppercase tracking-wider">${p.category}</span>
-                            <h3 onclick="openProductModal('${p.id}')" class="font-bold text-white text-base hover:text-rocket-red cursor-pointer transition-colors line-clamp-1">${p.title}</h3>
-                            <p class="text-xs text-gray-400 mt-1 line-clamp-2 leading-relaxed">${p.desc}</p>
-                        </div>
-
-                        <div class="pt-3 border-t border-rocket-gray/50 flex items-center justify-between">
-                            <span class="text-base font-black text-white">${p.price} ج.م</span>
-                            <button onclick="addToCart('${p.id}')" class="px-4 py-2 bg-rocket-red hover:bg-rocket-redHover text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-md shadow-rocket-red/20">
-                                <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
-                            </button>
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=No+Image';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                        <div class="absolute bottom-3 left-3 z-10 bg-rocket-black/90 backdrop-blur-sm border border-white/10 rounded-xl px-3.5 py-2 shadow-lg pointer-events-none">
+                            <span class="text-xs text-gray-300 block leading-none mb-1">السعر</span>
+                            <span class="text-rocket-red font-black text-lg leading-none">${Number(p.price).toLocaleString('ar-EG')} ج.م</span>
                         </div>
                     </div>
                 </div>
@@ -1160,28 +1142,105 @@
             renderProducts();
         }
 
-        function addToCart(productId) {
+        // اختيارات المنتج داخل نافذة التفاصيل
+        let selectedProductSize = null;
+        let selectedProductColor = null;
+        let selectedProductQty = 1;
+
+        function selectProductSize(size) {
+            selectedProductSize = size;
+
+            document.querySelectorAll('#modal-product-content .size-option').forEach(btn => {
+                const isSelected = btn.dataset.size === size;
+                btn.classList.toggle('bg-rocket-red', isSelected);
+                btn.classList.toggle('border-rocket-red', isSelected);
+                btn.classList.toggle('font-bold', isSelected);
+                btn.classList.toggle('bg-rocket-black', !isSelected);
+                btn.classList.toggle('border-rocket-gray', !isSelected);
+            });
+
+            const label = document.getElementById('selected-size-label');
+            if (label) label.textContent = `المقاس المختار: ${size}`;
+        }
+
+        function selectProductColor(color) {
+            selectedProductColor = color;
+
+            document.querySelectorAll('#modal-product-content .color-option').forEach(btn => {
+                const isSelected = btn.dataset.color === color;
+                btn.classList.toggle('bg-rocket-red', isSelected);
+                btn.classList.toggle('border-rocket-red', isSelected);
+                btn.classList.toggle('font-bold', isSelected);
+                btn.classList.toggle('bg-rocket-black', !isSelected);
+                btn.classList.toggle('border-rocket-gray', !isSelected);
+            });
+
+            const label = document.getElementById('selected-color-label');
+            if (label) label.textContent = `اللون المختار: ${color}`;
+        }
+
+        function changeProductQty(change) {
+            selectedProductQty = Math.max(1, Math.min(99, selectedProductQty + change));
+            const qtyEl = document.getElementById('product-qty');
+            if (qtyEl) qtyEl.textContent = selectedProductQty;
+            const addBtn = document.getElementById('modal-add-to-cart-btn');
+            if (addBtn) addBtn.innerHTML = `إضافة ${selectedProductQty > 1 ? `(${selectedProductQty}) ` : ''}إلى السلة 🚀`;
+            updateProductTotal();
+        }
+
+        function updateProductTotal() {
+            const priceEl = document.getElementById('product-unit-price');
+            const totalEl = document.getElementById('product-total-price');
+            const product = window.currentModalProduct;
+            if (!product) return;
+            if (priceEl) priceEl.textContent = `${Number(product.price).toLocaleString('ar-EG')} ج.م`;
+            if (totalEl) totalEl.textContent = `${Number(product.price * selectedProductQty).toLocaleString('ar-EG')} ج.م`;
+        }
+
+        function addToCart(productId, size = selectedProductSize, color = selectedProductColor, qty = selectedProductQty) {
             const product = state.products.find(p => p.id === productId);
             if (!product) return;
 
-            const existingIndex = state.cart.findIndex(item => item.id === productId);
+            if (!size) {
+                showToast('من فضلك اختر المقاس أولاً 👕');
+                return;
+            }
+            if (!color) {
+                showToast('من فضلك اختر اللون أولاً 🎨');
+                return;
+            }
+
+            qty = Math.max(1, Number(qty) || 1);
+
+            // نفس المنتج بمقاس ولون مختلف = عنصر مستقل في السلة
+            const existingIndex = state.cart.findIndex(item =>
+                item.id === productId && item.size === size && item.color === color
+            );
+
             if (existingIndex > -1) {
-                state.cart[existingIndex].qty += 1;
+                state.cart[existingIndex].qty += qty;
             } else {
-                state.cart.push({ ...product, qty: 1 });
+                state.cart.push({ ...product, size, color, qty });
             }
 
             saveCart();
             updateCartUI();
-            showToast(`تمت إضافة "${product.title}" إلى سلة الشراء بنجاح! 🔥`);
+            showToast(`تمت إضافة ${qty} قطعة من "${product.title}" — ${size} / ${color} 🔥`);
         }
 
-        function updateCartQty(id, change) {
-            const item = state.cart.find(i => i.id === id);
+        function updateCartQty(id, change, size = null, color = null) {
+            const item = state.cart.find(i => i.id === id &&
+                (size === null || i.size === size) &&
+                (color === null || i.color === color)
+            );
             if (item) {
                 item.qty += change;
                 if (item.qty <= 0) {
-                    state.cart = state.cart.filter(i => i.id !== id);
+                    state.cart = state.cart.filter(i => !(
+                        i.id === id &&
+                        (size === null || i.size === size) &&
+                        (color === null || i.color === color)
+                    ));
                 }
                 saveCart();
                 updateCartUI();
@@ -1222,11 +1281,12 @@
                         <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-lg">
                         <div class="flex-grow">
                             <h4 class="font-bold text-white text-xs line-clamp-1">${item.title}</h4>
-                            <span class="text-xs text-rocket-red font-bold">${item.price} ج.م × ${item.qty}</span>
+                            <span class="text-[11px] text-gray-400 block">المقاس: ${item.size || 'غير محدد'} · اللون: ${item.color || 'غير محدد'}</span>
+                            <span class="text-xs text-rocket-red font-bold block">${Number(item.price).toLocaleString('ar-EG')} ج.م × ${item.qty} = ${(item.price * item.qty).toLocaleString('ar-EG')} ج.م</span>
                             <div class="flex items-center gap-2 mt-2">
-                                <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">-</button>
+                                <button onclick="updateCartQty('${item.id}', -1, '${item.size || ''}', '${item.color || ''}')" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">-</button>
                                 <span class="text-xs font-bold text-white px-1">${item.qty}</span>
-                                <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">+</button>
+                                <button onclick="updateCartQty('${item.id}', 1, '${item.size || ''}', '${item.color || ''}')" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">+</button>
                             </div>
                         </div>
                     </div>
@@ -1273,7 +1333,7 @@
                     </div>
                     ${state.cart.map(item => `
                         <div class="flex justify-between text-gray-300">
-                            <span class="line-clamp-1">${item.title} (${item.qty})</span>
+                            <span class="line-clamp-1">${item.title} — ${item.size || 'غير محدد'} / ${item.color || 'غير محدد'} × ${item.qty}</span>
                             <span class="font-bold text-white">${(item.price * item.qty).toLocaleString('ar-EG')} ج.م</span>
                         </div>
                     `).join('')}
@@ -1291,13 +1351,14 @@
             document.getElementById('checkout-modal').classList.add('hidden');
         }
 
-       async function submitOrder(e) {
-    e.preventDefault();
-    await finalizeOrder(true);
-}
+        async function submitOrder(e) {
+            e.preventDefault();
+            await finalizeOrder(false);
+        }
 
+        async function finalizeOrder(sendWhatsApp = false) {
             if (state.cart.length === 0) {
-                showToast("حدث خطأ، سلة التسوق فارغة!");
+                showToast("سلة التسوق فارغة!");
                 closeCheckoutModal();
                 return;
             }
@@ -1306,143 +1367,112 @@
             const phone = document.getElementById('order-phone').value.trim();
             const address = document.getElementById('order-address').value.trim();
             const payment = document.getElementById('order-payment').value;
-            const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const submitBtn = document.getElementById('submit-order-btn');
-
-            const cartItemsText = state.cart.map(i => `${i.title} - (الكمية: ${i.qty}) - السعر: ${(i.price * i.qty).toLocaleString('ar-EG')} ج.م`).join('\n');
-
-            const newOrder = {
-                id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
-                date: new Date().toLocaleDateString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
-                customer: { name, phone, address },
-                items: [...state.cart],
-                total: totalPrice,
-                paymentMethod: payment,
-                status: 'جديد 🚀'
-            };
-
-            state.orders.unshift(newOrder);
-            try {
-                localStorage.setItem('rocket_orders', JSON.stringify(state.orders));
-            } catch (err) {
-                console.error("Order save error:", err);
-            }
-
-            const formspreeEndpoint = state.storeSettings.formspreeUrl || '';
-            if (formspreeEndpoint) {
-                if (submitBtn) submitBtn.innerText = 'جاري إرسال الطلب لإيميلك... ⏳';
-
-                const formData = new FormData();
-                formData.append("رقم الطلب", newOrder.id);
-                formData.append("اسم العميل", name);
-                formData.append("رقم الهاتف", phone);
-                formData.append("العنوان بالتفصيل", address);
-                formData.append("طريقة الدفع", payment);
-                formData.append("الإجمالي", `${totalPrice.toLocaleString('ar-EG')} ج.م`);
-                formData.append("تفاصيل المنتجات بالسلة", cartItemsText);
-
-                try {
-                    const res = await fetch(formspreeEndpoint, {
-                        method: "POST",
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (res.ok) {
-                        showToast(`تم إرسال الطلب لإيميلك وتسجيله بالسيستم بنجاح! رقم الطلب: ${newOrder.id} 🎉`);
-                    } else {
-                        showToast(`تم تسجيل الطلب في لوحة التحكم!`);
-                    }
-                } catch (err) {
-                    console.error("Formspree Send Error:", err);
-                    showToast(`تم تسجيل الطلب بالنظام!`);
-                } finally {
-                    if (submitBtn) submitBtn.innerHTML = '<span>إرسال الطلب عبر الإيميل (Formspree) ✉️</span>';
-                }
-            } else {
-                showToast(`تم تسجيل الطلب بالسيستم! رقم الطلب: ${newOrder.id} 🎉`);
-            }
-
-            state.cart = [];
-            saveCart();
-            updateCartUI();
-            closeCheckoutModal();
-            renderAdminOrders();
-        }
-
-        function submitOrderViaWhatsApp() {
-            if (state.cart.length === 0) {
-                showToast("سلة التسوق فارغة!");
-                return;
-            }
-
-            const name = document.getElementById('order-name').value.trim();
-            const phone = document.getElementById('order-phone').value.trim();
-            const address = document.getElementById('order-address').value.trim();
-            const payment = document.getElementById('order-payment').value;
-
             if (!name || !phone || !address) {
                 showToast("يرجى ملء الاسم ورقم الهاتف والعنوان أولاً!");
                 return;
             }
 
             const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const cartItemsText = state.cart.map(i => `• ${i.title} (${i.qty} قطعة) - ${(i.price * i.qty).toLocaleString('ar-EG')} ج.م`).join('%0A');
-
-            const message = `🚀 *طلب جديد من متجر THE_ROCKET*%0A%0A` +
-                `*اسم العميل:* ${encodeURIComponent(name)}%0A` +
-                `*رقم الهاتف:* ${encodeURIComponent(phone)}%0A` +
-                `*العنوان:* ${encodeURIComponent(address)}%0A` +
-                `*طريقة الدفع:* ${encodeURIComponent(payment)}%0A%0A` +
-                `*تفاصيل المنتجات:*%0A${cartItemsText}%0A%0A` +
-                `*المجموع الإجمالي:* ${totalPrice.toLocaleString('ar-EG')} ج.م`;
-
-            const targetNum = state.storeSettings.whatsappNum || '201000000000';
-            const waUrl = `https://wa.me/${targetNum}?text=${message}`;
-
-            window.open(waUrl, '_blank');
-
             const newOrder = {
-                id: 'ORD-WA-' + Math.floor(100000 + Math.random() * 900000),
-                date: new Date().toLocaleDateString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
+                id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+                date: new Date().toISOString(),
                 customer: { name, phone, address },
                 items: [...state.cart],
                 total: totalPrice,
-                paymentMethod: payment + ' (واتساب)',
-                status: 'جديد 🚀'
+                paymentMethod: payment,
+                status: 'جديد 🚀',
+                source: sendWhatsApp ? 'المتجر + واتساب' : 'المتجر'
             };
+
             state.orders.unshift(newOrder);
-            try { localStorage.setItem('rocket_orders', JSON.stringify(state.orders)); } catch (e) {}
+            try { localStorage.setItem('rocket_orders', JSON.stringify(state.orders)); } catch (err) {}
+            renderAdminOrders();
+
+            const submitBtn = document.getElementById('submit-order-btn');
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<span>جاري حفظ الطلب... ⏳</span>'; }
+
+            const cloudOk = await syncOrderToCloud(newOrder);
+
+            if (sendWhatsApp) openOrderWhatsApp(newOrder);
 
             state.cart = [];
             saveCart();
             updateCartUI();
             closeCheckoutModal();
             renderAdminOrders();
+
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = '<span>تأكيد الطلب وحفظه في النظام 🚀</span>'; }
+            showToast(cloudOk ? `تم حفظ الطلب في النظام وGoogle Drive! رقم الطلب: ${newOrder.id} 🎉` : `تم تسجيل الطلب محلياً. رقم الطلب: ${newOrder.id}`);
         }
 
-        function renderAdminTable() {
-            const table = document.getElementById('admin-products-table');
-            const countBadge = document.getElementById('prod-count-badge');
-            
-            if (countBadge) countBadge.innerText = `${state.products.length} منتجات`;
+        async function submitOrderViaWhatsApp() {
+            await finalizeOrder(true);
+        }
 
-            if (table) {
-                table.innerHTML = state.products.map(p => `
-                    <tr class="hover:bg-rocket-black/50">
-                        <td class="p-4 flex items-center gap-3">
-                            <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-lg border border-rocket-gray">
-                            <span class="font-bold text-white text-xs">${p.title}</span>
-                        </td>
-                        <td class="p-4 text-xs text-gray-400">${p.category}</td>
-                        <td class="p-4 text-xs font-bold text-rocket-red">${p.price} ج.م</td>
-                        <td class="p-4 text-xs">${p.badge ? `<span class="bg-rocket-red/20 text-rocket-red px-2 py-0.5 rounded text-[10px] font-bold">${p.badge}</span>` : '-'}</td>
-                        <td class="p-4 text-center space-x-2 space-x-reverse">
-                            <button onclick="editProduct('${p.id}')" class="p-1.5 bg-rocket-gray hover:bg-rocket-red text-white rounded-lg transition-colors" title="تعديل"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="deleteProduct('${p.id}')" class="p-1.5 bg-rocket-gray hover:bg-red-700 text-white rounded-lg transition-colors" title="حذف"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `).join('');
+        function openOrderWhatsApp(order) {
+            const total = Number(order.total || 0).toLocaleString('ar-EG');
+            const items = (order.items || []).map(i => `• ${i.title} — مقاس ${i.size || 'غير محدد'} — لون ${i.color || 'غير محدد'} — ${i.qty} × ${Number(i.price).toLocaleString('ar-EG')} = ${(i.price*i.qty).toLocaleString('ar-EG')} ج.م`).join('\n');
+            const message = `🚀 طلب جديد من ${state.storeSettings.name}\n\nرقم الطلب: ${order.id}\nالعميل: ${order.customer.name}\nالهاتف: ${order.customer.phone}\nالعنوان: ${order.customer.address}\nالدفع: ${order.paymentMethod}\n\nالمنتجات:\n${items}\n\nالإجمالي: ${total} ج.م`;
+            const targetNum = (state.storeSettings.whatsappNum || '').replace(/\D/g, '');
+            if (!targetNum) { showToast('لم يتم ضبط رقم واتساب في الإعدادات.'); return; }
+            window.open(`https://wa.me/${targetNum}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        async function syncOrderToCloud(order) {
+            const endpoint = (state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) return false;
+            try {
+                const body = new URLSearchParams();
+                body.set('action', 'createOrder');
+                body.set('payload', JSON.stringify(order));
+                const res = await fetch(endpoint, { method: 'POST', body });
+                return res.ok;
+            } catch (err) {
+                console.error('Google Cloud order sync error:', err);
+                return false;
+            }
+        }
+
+        async function syncOrdersFromCloud(showMessage = false) {
+            const endpoint = (state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) {
+                if (showMessage) showToast('ضع رابط Google Apps Script من إعدادات الأدمن أولاً.');
+                return false;
+            }
+            try {
+                const url = endpoint + (endpoint.includes('?') ? '&' : '?') + 'action=listOrders';
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) throw new Error('فشل الاتصال بالخدمة السحابية');
+                const data = await res.json();
+                const remoteOrders = Array.isArray(data.orders) ? data.orders : [];
+                const map = new Map(state.orders.map(o => [o.id, o]));
+                remoteOrders.forEach(o => map.set(o.id, { ...map.get(o.id), ...o }));
+                state.orders = Array.from(map.values()).sort((a,b) => new Date(b.date) - new Date(a.date));
+                localStorage.setItem('rocket_orders', JSON.stringify(state.orders));
+                renderAdminOrders();
+                if (showMessage) showToast(`تم تحديث ${remoteOrders.length} طلب من Google بنجاح 🚀`);
+                return true;
+            } catch (err) {
+                console.error('Google Cloud orders fetch error:', err);
+                if (showMessage) showToast('تعذر جلب الطلبات من Google. راجع رابط Apps Script.');
+                return false;
+            }
+        }
+
+        async function testGoogleCloudConnection() {
+            const endpoint = (document.getElementById('setting-google-apps-url')?.value || state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) { showToast('أدخل رابط Google Apps Script أولاً.'); return; }
+            try {
+                const url = endpoint + (endpoint.includes('?') ? '&' : '?') + 'action=ping';
+                const res = await fetch(url, { cache: 'no-store' });
+                const data = await res.json();
+                if (data.ok) {
+                    const stat = document.getElementById('stat-cloud-status');
+                    if (stat) stat.innerText = 'متصل ✓';
+                    showToast('تم الاتصال بـ Google بنجاح 🚀');
+                } else throw new Error('الخدمة لم تُرجع استجابة صحيحة');
+            } catch (err) {
+                showToast('فشل اختبار Google. تأكد من نشر Apps Script كـ Web App.');
             }
         }
 
@@ -1461,7 +1491,7 @@
             if (!table) return;
 
             if (state.orders.length === 0) {
-                table.innerHTML = `<tr><td colspan="8" class="text-center py-8 text-gray-400">لا توجد طلبات مسجلة حتى الآن.</td></tr>`;
+                table.innerHTML = `<tr><td colspan="9" class="text-center py-8 text-gray-400">لا توجد طلبات مسجلة حتى الآن.</td></tr>`;
             } else {
                 table.innerHTML = state.orders.map(o => `
                     <tr class="hover:bg-rocket-black/50">
@@ -1472,11 +1502,14 @@
                         </td>
                         <td class="p-4 text-xs text-gray-300 max-w-xs line-clamp-2">${o.customer.address}</td>
                         <td class="p-4 text-xs text-gray-300">
-                            ${o.items.map(i => `<div>• ${i.title} (${i.qty})</div>`).join('')}
+                            ${o.items.map(i => `<div>• ${i.title} — مقاس ${i.size || 'غير محدد'} — لون ${i.color || 'غير محدد'} (${i.qty})</div>`).join('')}
                         </td>
                         <td class="p-4 font-bold text-rocket-red text-xs">${o.total.toLocaleString('ar-EG')} ج.م</td>
                         <td class="p-4 text-xs text-gray-300">${o.paymentMethod}</td>
                         <td class="p-4 text-xs"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-md font-bold">${o.status}</span></td>
+                        <td class="p-4 text-center">
+                            <button onclick='openOrderWhatsApp(${JSON.stringify(o).replace(/'/g, "&#39;")})' class="p-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors" title="إرسال الطلب عبر واتساب"><i class="fa-brands fa-whatsapp"></i></button>
+                        </td>
                         <td class="p-4 text-center">
                             <button onclick="deleteOrder('${o.id}')" class="p-1.5 bg-rocket-gray hover:bg-red-700 text-white rounded-lg transition-colors"><i class="fa-solid fa-trash"></i></button>
                         </td>
@@ -1489,37 +1522,84 @@
             const product = state.products.find(p => p.id === id);
             if (!product) return;
 
+            window.currentModalProduct = product;
+            selectedProductSize = null;
+            selectedProductColor = null;
+            selectedProductQty = 1;
+
+            const colors = Array.isArray(product.colors) && product.colors.length
+                ? product.colors
+                : ['أسود', 'أبيض', 'أحمر'];
+
+            const colorDot = (color) => {
+                const map = {
+                    'أسود': '#111827', 'أبيض': '#f9fafb', 'أحمر': '#ef233c',
+                    'أزرق': '#2563eb', 'أخضر': '#16a34a', 'رمادي': '#6b7280',
+                    'بيج': '#d6b98c', 'بني': '#8b5e3c', 'كحلي': '#1e3a5f'
+                };
+                return map[color] || '#9ca3af';
+            };
+
             const modalContent = document.getElementById('modal-product-content');
             if (modalContent) {
                 modalContent.innerHTML = `
                     <div class="rounded-xl overflow-hidden bg-rocket-black border border-rocket-gray">
-                        <img src="${product.image}" alt="${product.title}" class="w-full h-72 object-cover">
+                        <img src="${product.image}" alt="${product.title}" class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=No+Image';">
                     </div>
-                    <div class="space-y-4 flex flex-col justify-between">
+                    <div class="space-y-5 flex flex-col justify-between">
                         <div>
                             <span class="text-xs font-bold text-rocket-red uppercase tracking-wider">${product.category}</span>
                             <h2 class="text-2xl font-black text-white mt-1">${product.title}</h2>
-                            <div class="text-2xl font-black text-rocket-red my-2">${product.price} ج.م</div>
-                            <p class="text-xs text-gray-300 leading-relaxed">${product.desc}</p>
-                            
+                            <p class="text-xs text-gray-300 leading-relaxed mt-2">${product.desc || ''}</p>
+
+                            <div class="mt-4 p-4 bg-rocket-black rounded-xl border border-rocket-gray/60 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-gray-400">سعر القطعة</span>
+                                    <span id="product-unit-price" class="font-black text-white">${Number(product.price).toLocaleString('ar-EG')} ج.م</span>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-rocket-gray/50 pt-3">
+                                    <span class="text-xs text-gray-400">إجمالي الكمية</span>
+                                    <span id="product-total-price" class="text-xl font-black text-rocket-red">${Number(product.price).toLocaleString('ar-EG')} ج.م</span>
+                                </div>
+                            </div>
+
                             <div class="mt-4 pt-4 border-t border-rocket-gray/50 space-y-2">
-                                <label class="block text-xs font-bold text-gray-300">اختر المقاس المناسب:</label>
-                                <div class="flex gap-2">
-                                    <button class="px-3 py-1 bg-rocket-black border border-rocket-gray rounded-lg text-xs hover:border-rocket-red text-white">S</button>
-                                    <button class="px-3 py-1 bg-rocket-red border border-rocket-red rounded-lg text-xs text-white font-bold">M</button>
-                                    <button class="px-3 py-1 bg-rocket-black border border-rocket-gray rounded-lg text-xs hover:border-rocket-red text-white">L</button>
-                                    <button class="px-3 py-1 bg-rocket-black border border-rocket-gray rounded-lg text-xs hover:border-rocket-red text-white">XL</button>
+                                <label class="block text-xs font-bold text-gray-300">اختر المقاس:</label>
+                                <div class="flex gap-2 flex-wrap" role="group" aria-label="اختيار المقاس">
+                                    ${['S','M','L','XL'].map(size => `<button type="button" data-size="${size}" onclick="selectProductSize('${size}')" class="size-option px-4 py-2 bg-rocket-black border border-rocket-gray rounded-lg text-xs hover:border-rocket-red text-white transition-all">${size}</button>`).join('')}
+                                </div>
+                                <p id="selected-size-label" class="text-[11px] text-gray-400">لم يتم اختيار مقاس بعد</p>
+                            </div>
+
+                            <div class="mt-4 space-y-2">
+                                <label class="block text-xs font-bold text-gray-300">اختر اللون:</label>
+                                <div class="flex gap-2 flex-wrap" role="group" aria-label="اختيار اللون">
+                                    ${colors.map(color => `<button type="button" data-color="${color}" onclick="selectProductColor('${color.replace(/'/g, "\'")}')" class="color-option px-3 py-2 bg-rocket-black border border-rocket-gray rounded-lg text-xs text-white transition-all flex items-center gap-2 hover:border-rocket-red"><span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background:${colorDot(color)}"></span>${color}</button>`).join('')}
+                                </div>
+                                <p id="selected-color-label" class="text-[11px] text-gray-400">لم يتم اختيار لون بعد</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between gap-4 p-3 bg-rocket-black rounded-xl border border-rocket-gray/60">
+                                <div>
+                                    <span class="block text-xs font-bold text-gray-300">الكمية</span>
+                                    <span class="text-[10px] text-gray-500">حدد عدد القطع المطلوبة</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" onclick="changeProductQty(-1)" class="w-9 h-9 rounded-lg bg-rocket-gray text-white font-black hover:bg-rocket-red">−</button>
+                                    <span id="product-qty" class="min-w-[24px] text-center text-lg font-black text-white">1</span>
+                                    <button type="button" onclick="changeProductQty(1)" class="w-9 h-9 rounded-lg bg-rocket-gray text-white font-black hover:bg-rocket-red">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button onclick="addToCart('${product.id}'); closeProductModal();" class="w-full py-3.5 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg transition-all">
-                            إضافة إلى السلة الان 🚀
+                        <button id="modal-add-to-cart-btn" onclick="if (!selectedProductSize) { showToast('من فضلك اختر المقاس أولاً 👕'); return; } if (!selectedProductColor) { showToast('من فضلك اختر اللون أولاً 🎨'); return; } addToCart('${product.id}', selectedProductSize, selectedProductColor, selectedProductQty); closeProductModal();" class="w-full py-3.5 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg transition-all">
+                            إضافة ${selectedProductQty > 1 ? `(${selectedProductQty})` : ''} إلى السلة 🚀
                         </button>
                     </div>
                 `;
             }
 
+            updateProductTotal();
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
@@ -1548,7 +1628,7 @@
 
             resultsDiv.innerHTML = matched.map(p => `
                 <div onclick="openProductModal('${p.id}'); toggleSearchModal();" class="flex items-center gap-3 p-2 hover:bg-rocket-black rounded-lg cursor-pointer">
-                    <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-md">
+                    <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';">
                     <div>
                         <h5 class="text-xs font-bold text-white">${p.title}</h5>
                         <span class="text-[10px] text-rocket-red font-bold">$${p.price}</span>
@@ -1563,7 +1643,7 @@
         }
 
         function switchAdminTab(tab) {
-            const tabs = ['products', 'orders', 'settings', 'stats'];
+            const tabs = ['products', 'orders', 'settings', 'github', 'stats'];
             tabs.forEach(t => {
                 const el = document.getElementById(`admin-tab-${t}`);
                 const btn = document.getElementById(`tab-btn-${t}`);
@@ -1721,13 +1801,6 @@ try {
         }
 
         function saveProducts() {
-            try {
-                localStorage.setItem('rocket_products', JSON.stringify(state.products));
-            } catch (e) {
-                console.error("Products save error:", e);
-            }
-        }
-function saveProducts() {
     try {
         localStorage.setItem('rocket_products', JSON.stringify(state.products));
         
@@ -1793,8 +1866,16 @@ async function testGitHubConnection() {
     }
 }
 
+let githubSyncInProgress = false;
+
 async function syncToGitHub(manualTrigger = false) {
 
+    if (githubSyncInProgress) {
+        if (manualTrigger) showToast("المزامنة قيد التنفيذ بالفعل، انتظر لحظات...");
+        return;
+    }
+
+    githubSyncInProgress = true;
     saveGitHubInputs();
 
     const {
@@ -1908,37 +1989,75 @@ async function syncToGitHub(manualTrigger = false) {
 
     } finally {
 
+        githubSyncInProgress = false;
+
         if (syncBtn) {
             syncBtn.innerHTML =
                 '<i class="fa-brands fa-github text-sm"></i> مزامنة وحفظ التغييرات على GitHub الآن 🚀';
         }
     }
 }
-        function saveAdminSettings() {
-            const formspreeUrl = document.getElementById('setting-formspree-url').value.trim();
-            const whatsappNum = document.getElementById('setting-whatsapp-num').value.trim();
-            const name = document.getElementById('setting-store-name').value.trim();
-            const heroTitle = document.getElementById('setting-hero-title').value.trim();
-            const heroSub = document.getElementById('setting-hero-sub').value.trim();
-            const heroImg = document.getElementById('setting-hero-img').value.trim();
+        async function saveAdminSettings() {
+            const whatsappNum = document.getElementById('setting-whatsapp-num')?.value.trim() || '';
+            const googleAppsScriptUrl = document.getElementById('setting-google-apps-url')?.value.trim() || '';
+            const name = document.getElementById('setting-store-name')?.value.trim() || '';
+            const heroTitle = document.getElementById('setting-hero-title')?.value.trim() || '';
+            const heroSub = document.getElementById('setting-hero-sub')?.value.trim() || '';
+            const autoWhatsApp = document.getElementById('setting-auto-whatsapp')?.checked !== false;
+            const heroFile = document.getElementById('setting-hero-file')?.files?.[0];
+
+            if (heroFile) {
+                try {
+                    const heroData = await compressImageFile(heroFile, 1400, 0.82);
+                    state.storeSettings.heroImg = heroData;
+                } catch (err) {
+                    showToast('تعذر تجهيز صورة الهيرو.');
+                    return;
+                }
+            }
 
             state.storeSettings = {
                 ...state.storeSettings,
-                formspreeUrl,
                 whatsappNum,
+                googleAppsScriptUrl,
+                autoWhatsApp,
                 name: name || state.storeSettings.name,
                 heroTitle: heroTitle || state.storeSettings.heroTitle,
                 heroSub: heroSub || state.storeSettings.heroSub,
-                heroImg: heroImg || state.storeSettings.heroImg
+                heroImg: state.storeSettings.heroImg || ''
             };
 
             try {
                 localStorage.setItem('rocket_settings', JSON.stringify(state.storeSettings));
                 applyStoreSettings();
-                showToast("تم حفظ جميع الإعدادات ورابط Formspree بنجاح 🚀");
+                showToast('تم حفظ إعدادات المتجر والربط بنجاح 🚀');
+                await syncOrdersFromCloud(false);
             } catch (e) {
-                console.error("Settings save error:", e);
+                console.error('Settings save error:', e);
+                showToast('تعذر حفظ الإعدادات. قد تكون صورة الهيرو كبيرة جداً.');
             }
+        }
+
+        function compressImageFile(file, maxSize = 1400, quality = 0.82) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+                        const canvas = document.createElement('canvas');
+                        canvas.width = Math.max(1, Math.round(img.width * scale));
+                        canvas.height = Math.max(1, Math.round(img.height * scale));
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = () => reject(new Error('Invalid image'));
+                    img.src = reader.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
         }
 
         function deleteOrder(id) {
@@ -1977,3 +2096,4 @@ async function syncToGitHub(manualTrigger = false) {
     </script>
 </body>
 </html>
+```
