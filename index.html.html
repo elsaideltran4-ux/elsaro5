@@ -54,7 +54,54 @@
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #ff1e38;
             border-radius: 4px;
-        }
+        }/* تحسين حجم المتجر على الموبايل */
+@media (max-width: 640px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    /* الهيدر */
+    header .h-20 {
+        height: 64px !important;
+    }
+
+    /* العناوين */
+    .text-4xl {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .text-3xl {
+        font-size: 1.7rem !important;
+    }
+
+    .text-2xl {
+        font-size: 1.4rem !important;
+    }
+
+    .text-xl {
+        font-size: 1.1rem !important;
+    }
+
+    /* صورة الهيرو */
+    .h-\[420px\] {
+        height: 280px !important;
+    }
+
+    /* تقليل المسافات الداخلية */
+    .p-8 {
+        padding: 1.25rem !important;
+    }
+
+    .p-6 {
+        padding: 1rem !important;
+    }
+
+    .gap-6 {
+        gap: 1rem !important;
+    }
+}
     </style>
 </head>
 <body class="bg-rocket-black text-gray-100 min-h-screen flex flex-col justify-between selection:bg-rocket-red selection:text-white">
