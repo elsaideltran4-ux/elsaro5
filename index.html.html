@@ -55,8 +55,28 @@
             background: #ff1e38;
             border-radius: 4px;
         }/* تحسين حجم المتجر على الموبايل */
-@media (max-width: 640px) {
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
 
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#products-grid,
+#full-shop-grid {
+    width: 100%;
+    min-width: 0;
+}
     body {
         font-size: 14px;
     }
