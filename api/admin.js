@@ -3,7 +3,7 @@ ROCKET - نسخة Vercel/GitHub الجاهزة
 1) ارفع index.html ومجلد api إلى Repository على GitHub.
 2) اربط الـRepository بمشروع Vercel.
 3) في Vercel > Settings > Environment Variables أضف:
-   ADMIN_PASSWORD = كلمة مرور قوية تختارها أنت
+   ADMIN_PASSWORD = Elsaro5
    GITHUB_TOKEN = GitHub Fine-grained Personal Access Token
 4) امنح الـToken صلاحية Contents: Read and write للمستودع المطلوب فقط.
 5) اعمل Redeploy من Vercel.
