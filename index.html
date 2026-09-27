@@ -1,0 +1,1946 @@
+```
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ROCKET | Streetwear Culture & E-Commerce</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rocket: {
+                            black: '#0a0a0c',
+                            card: '#141419',
+                            red: '#ff1e38',
+                            redHover: '#e0162e',
+                            gray: '#24242e',
+                            lightGray: '#9ca3af'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(255, 30, 56, 0.35);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(255, 30, 56, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #141419;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ff1e38;
+            border-radius: 4px;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { width: 100%; max-width: 100%; overflow-x: hidden; }
+        body { width: 100%; max-width: 100%; min-width: 0; }
+        img, video, canvas, svg { max-width: 100%; }
+        input, textarea, select, button { max-width: 100%; }
+        @media (max-width: 640px) {
+            .text-6xl { font-size: 2.45rem; line-height: 1.12; }
+            .text-4xl { font-size: 2rem; }
+            .h-20 { height: 4.25rem; }
+            #nav-brand-name { font-size: 1.05rem; }
+            #hero-image { height: 320px !important; }
+            .view-section { min-width: 0; max-width: 100vw; overflow-x: hidden; }
+        }
+    </style>
+</head>
+<body class="bg-rocket-black text-gray-100 min-h-screen flex flex-col justify-between selection:bg-rocket-red selection:text-white">
+
+    <div id="toast-container" class="fixed top-5 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <header class="sticky top-0 z-40 bg-rocket-black/90 backdrop-blur-md border-b border-rocket-gray/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="handleLogoClick()">
+                    <div class="w-10 h-10 rounded-xl bg-rocket-red flex items-center justify-center text-white font-black text-xl shadow-lg shadow-rocket-red/40 transform -rotate-6 hover:rotate-0 transition-transform">
+                        🚀
+                    </div>
+                    <div>
+                        <span id="nav-brand-name" class="text-2xl font-black tracking-wider uppercase text-white">THE_ROCKET</span>
+                        <span class="block text-[10px] tracking-widest text-rocket-red font-semibold -mt-1">STREETWEAR LAB</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 space-x-reverse font-bold text-sm">
+                    <button onclick="navigateTo('home')" class="nav-link text-white hover:text-rocket-red transition-colors">الرئيسية</button>
+                    <button onclick="navigateTo('shop')" class="nav-link text-gray-300 hover:text-rocket-red transition-colors">المنتجات والتصنيفات</button>
+                    <button onclick="navigateTo('about')" class="nav-link text-gray-300 hover:text-rocket-red transition-colors">عن البراند</button>
+                </nav>
+
+                <!-- Actions Right Side -->
+                <div class="flex items-center gap-4">
+                    <!-- Search Button -->
+                    <button onclick="toggleSearchModal()" class="p-2 text-gray-300 hover:text-rocket-red transition-colors" title="بحث">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+
+                    <!-- Copy Direct Store Link Button -->
+                    <button onclick="copyStoreLink()" class="p-2 text-gray-300 hover:text-rocket-red transition-colors flex items-center gap-1.5 bg-rocket-gray/40 px-3 py-1.5 rounded-xl border border-rocket-gray/60 text-xs font-bold" title="نسخ رابط المتجر المباشر">
+                        <i class="fa-solid fa-share-nodes text-rocket-red"></i>
+                        <span class="hidden sm:inline">مشاركة الرابط</span>
+                    </button>
+
+                    <!-- Cart Drawer Trigger -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2 text-gray-300 hover:text-rocket-red transition-colors" title="سلة الشراء">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-rocket-red text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold border-2 border-rocket-black">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-rocket-red" title="القائمة">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-rocket-card border-b border-rocket-gray/50 px-4 pt-3 pb-5 space-y-3">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-right py-2 text-white font-semibold">الرئيسية</button>
+            <button onclick="navigateTo('shop'); toggleMobileMenu();" class="block w-full text-right py-2 text-gray-300 font-semibold">المنتجات والتصنيفات</button>
+            <button onclick="navigateTo('about'); toggleMobileMenu();" class="block w-full text-right py-2 text-gray-300 font-semibold">عن البراند</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="flex-grow">
+        
+        <!-- VIEW: HOME -->
+        <section id="view-home" class="view-section">
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden bg-gradient-to-b from-rocket-black via-rocket-card to-rocket-black py-16 lg:py-24 border-b border-rocket-gray/40">
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <div class="absolute top-1/4 right-10 w-96 h-96 bg-rocket-red rounded-full blur-[140px]"></div>
+                    <div class="absolute bottom-10 left-10 w-80 h-80 bg-red-900 rounded-full blur-[120px]"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6 text-center lg:text-right">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rocket-red/10 border border-rocket-red/30 text-rocket-red text-xs font-bold tracking-wide">
+                                <span class="w-2 h-2 rounded-full bg-rocket-red animate-ping"></span>
+                                تشكيلة الشارع الجديدة 🔥
+                            </div>
+                            <h1 id="hero-title" class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                                أطلق استايلك الخاطف <br>
+                                <span class="text-rocket-red glow-text">THE ROCKET STREETWEAR</span>
+                            </h1>
+                            <p id="hero-subtitle" class="text-gray-400 text-base sm:text-lg max-w-xl font-medium leading-relaxed">
+                                تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء بعمر 20-35 سنة. خامات قطنية ثقيلة، قصات أوفرسايز، وطابع هيب هوب حضري فريد.
+                            </p>
+                            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                                <button onclick="navigateTo('shop')" class="px-8 py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transform hover:-translate-y-1 transition-all">
+                                    تسوق التشكيلة الجديدة الان <i class="fa-solid fa-arrow-left mr-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Hero Image Display -->
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-rocket-red to-red-900 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                            <div class="relative rounded-2xl overflow-hidden bg-rocket-card border border-rocket-gray shadow-2xl">
+                                <img id="hero-image" src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1000&q=80" alt="Streetwear Culture" class="w-full h-[420px] object-cover object-top hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-rocket-card border-y border-rocket-gray/50 py-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 rounded-xl bg-rocket-black/50 border border-rocket-gray/40">
+                            <i class="fa-solid fa-truck-fast text-2xl text-rocket-red mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">توصيل سريع</h4>
+                            <p class="text-xs text-gray-400 mt-1">خلال 24-48 ساعة لجميع المحافظات</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rocket-black/50 border border-rocket-gray/40">
+                            <i class="fa-solid fa-shirt text-2xl text-rocket-red mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">قطن 100% ثقيل</h4>
+                            <p class="text-xs text-gray-400 mt-1">خامات فاخرة مقاوِمَة للانكماش</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rocket-black/50 border border-rocket-gray/40">
+                            <i class="fa-solid fa-envelope-circle-check text-2xl text-rocket-red mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">تأكيد فوري</h4>
+                            <p class="text-xs text-gray-400 mt-1">إرسال الطلب للإيميل والواتساب مباشرة</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rocket-black/50 border border-rocket-gray/40">
+                            <i class="fa-solid fa-fire text-2xl text-rocket-red mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">إصدارات محدودة</h4>
+                            <p class="text-xs text-gray-400 mt-1">قطع حصرية لن تكرر</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="text-rocket-red text-xs font-black tracking-widest uppercase">Drop 01 Collection</span>
+                        <h2 class="text-3xl font-black text-white mt-1">المنتجات الأكثر مبيعاً للبداية 🚀</h2>
+                    </div>
+
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap gap-2" id="category-pills">
+                        <button onclick="filterCategory('all')" data-cat="all" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold bg-rocket-red text-white transition-all">الكل</button>
+                        <button onclick="filterCategory('hoodies')" data-cat="hoodies" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold bg-rocket-card text-gray-400 hover:text-white border border-rocket-gray/50 transition-all">هوديز (Hoodies)</button>
+                        <button onclick="filterCategory('sweatpants')" data-cat="sweatpants" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold bg-rocket-card text-gray-400 hover:text-white border border-rocket-gray/50 transition-all">سويت بانتس (Sweatpants)</button>
+                        <button onclick="filterCategory('caps')" data-cat="caps" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold bg-rocket-card text-gray-400 hover:text-white border border-rocket-gray/50 transition-all">كابات (Caps)</button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="view-shop" class="view-section hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-rocket-card border border-rocket-gray/50 rounded-2xl p-6 mb-8">
+                    <h2 class="text-2xl font-black text-white mb-2">متجر المنتجات الكامل</h2>
+                    <p class="text-gray-400 text-sm">استعرض كافة تشكيلات Streetwear المتوفرة حالياً في المخزن.</p>
+                </div>
+                
+                <div id="full-shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Products rendered via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="view-about" class="view-section hidden py-16">
+            <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+                <div class="w-20 h-20 rounded-2xl bg-rocket-red text-white text-4xl flex items-center justify-center mx-auto shadow-xl shadow-rocket-red/40">
+                    🚀
+                </div>
+                <h2 class="text-4xl font-black text-white">فلسفة براند THE_ROCKET</h2>
+                <p class="text-gray-300 leading-relaxed text-base">
+                    تأسس متجر <strong class="text-white">The Rocket</strong> ليكون منصة الموضة الثائرة لجيل الشباب الحقيقي. نحن لا نبيع مجرد ملابس، بل نجسد طاقة الشارع، استقلالية الشخصية، والجودة العالية التي تستحقها.
+                </p>
+            </div>
+        </section>
+
+        <section id="view-admin" class="view-section hidden py-12 bg-rocket-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                
+                <!-- Admin Header -->
+                <div class="bg-gradient-to-r from-rocket-card via-rocket-gray/40 to-rocket-card p-6 rounded-2xl border border-rocket-red/40 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-rocket-red text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-rocket-red/30">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-black text-white">لوحة التحكم السرية للمتجر (Admin Command Center)</h2>
+                            <p class="text-xs text-rocket-red font-semibold">تحكم كامل بالمنتجات، الطلبات، Google Drive، وواتساب</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="saveAdminSettings()" class="px-5 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white text-xs font-bold rounded-xl transition-all shadow-md">
+                            <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ إعدادات المتجر والربط
+                        </button>
+                        <button onclick="navigateTo('home')" class="px-4 py-2.5 bg-rocket-gray hover:bg-rocket-gray/80 text-gray-300 text-xs font-bold rounded-xl border border-gray-600">
+                            خروج للمتجر
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Tabs Nav -->
+                <div class="flex border-b border-rocket-gray/60 gap-6 overflow-x-auto">
+                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="tab-btn py-3 font-bold text-sm text-rocket-red border-b-2 border-rocket-red whitespace-nowrap">إدارة المنتجات (Add & Edit)</button>
+                    <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap flex items-center gap-2">
+                        طلبات العملاء
+                        <span id="admin-orders-count" class="bg-rocket-red text-white text-[10px] px-2 py-0.5 rounded-full font-bold">0</span>
+                    </button>
+                    <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap">تخصيص الهوية والبريد والإعدادات</button>
+
+<button onclick="switchAdminTab('github')" id="tab-btn-github" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap flex items-center gap-1.5">
+    <i class="fa-brands fa-github text-rocket-red"></i> ربط GitHub التلقائي
+</button>
+                    <button onclick="switchAdminTab('stats')" id="tab-btn-stats" class="tab-btn py-3 font-bold text-sm text-gray-400 hover:text-white whitespace-nowrap">إحصائيات المبيعات</button>
+                </div>
+
+                <!-- ADMIN TAB 1: PRODUCTS MANAGEMENT -->
+                <div id="admin-tab-products" class="space-y-8">
+                    <!-- Add / Edit Product Form -->
+                    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-6">
+                        <h3 id="form-title" class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-plus-circle text-rocket-red"></i> إضافة منتج جديد للمتجر
+                        </h3>
+                        
+                        <form id="product-form" onsubmit="handleProductSubmit(event)" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <input type="hidden" id="admin-prod-id" value="">
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1">اسم المنتج *</label>
+                                <input type="text" id="admin-prod-title" required placeholder="مثال: Heavy Zip Hoodie" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1">قسم المنتج *</label>
+                                <select id="admin-prod-category" required class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                                    <option value="hoodies">هوديز (Hoodies)</option>
+                                    <option value="sweatpants">سويت بانتس (Sweatpants)</option>
+                                    <option value="caps">كابات (Caps)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1">السعر ($) *</label>
+                                <input type="number" step="0.01" id="admin-prod-price" required placeholder="مثال: 45" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1">شارة للمنتج (Badge)</label>
+                                <input type="text" id="admin-prod-badge" placeholder="مثال: NEW DROP, BESTSELLER" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-gray-300 mb-1">رابط صورة المنتج (Image URL) *</label>
+                                <div class="md:col-span-2">
+    <label class="block text-xs font-bold text-gray-300 mb-1">
+        صورة المنتج من الجهاز *
+    </label>
+
+    <input
+        type="file"
+        id="admin-prod-image-file"
+        accept="image/*"
+        class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white"
+    >
+
+    <input
+        type="hidden"
+        id="admin-prod-image"
+    >
+
+    <p class="text-[10px] text-gray-500 mt-1">
+        اختر صورة من جهازك وسيتم حفظها مع بيانات المنتج.
+    </p>
+</div>
+                            </div>
+
+                            <div class="md:col-span-3">
+                                <label class="block text-xs font-bold text-gray-300 mb-1">الوصف التسويقي القصير *</label>
+                                <textarea id="admin-prod-desc" rows="3" required placeholder="اكتب وصفاً جذاباً يعكس طابع الستريت وير والخامة..." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none"></textarea>
+                            </div>
+
+                            <div class="md:col-span-3 flex items-center justify-end gap-3 pt-2">
+                                <button type="button" onclick="resetProductForm()" class="px-5 py-2.5 bg-rocket-gray text-gray-300 text-xs font-bold rounded-xl hover:bg-gray-700">إلغاء</button>
+                                <button type="submit" class="px-6 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white text-xs font-bold rounded-xl shadow-lg">حفظ ونشر المنتج 🚀</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Existing Products Table -->
+                    <div class="bg-rocket-card rounded-2xl border border-rocket-gray/60 overflow-hidden">
+                        <div class="p-5 border-b border-rocket-gray/60 flex items-center justify-between">
+                            <h3 class="font-bold text-white text-base">قائمة المنتجات الحالية بالمتجر</h3>
+                            <span id="prod-count-badge" class="text-xs bg-rocket-red/20 text-rocket-red font-bold px-3 py-1 rounded-full border border-rocket-red/30">0 منتجات</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-rocket-black text-gray-400 text-xs uppercase border-b border-rocket-gray">
+                                    <tr>
+                                        <th class="p-4">المنتج</th>
+                                        <th class="p-4">القسم</th>
+                                        <th class="p-4">السعر</th>
+                                        <th class="p-4">الشارة</th>
+                                        <th class="p-4 text-center">الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-products-table" class="divide-y divide-rocket-gray/40 text-gray-200">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADMIN TAB 2: ORDERS MANAGEMENT -->
+                <div id="admin-tab-orders" class="hidden space-y-6">
+                    <div class="bg-rocket-card rounded-2xl border border-rocket-gray/60 overflow-hidden">
+                        <div class="p-5 border-b border-rocket-gray/60 flex items-center justify-between">
+                            <h3 class="font-bold text-white text-base flex items-center gap-2">
+                                <i class="fa-solid fa-cart-flatbed text-rocket-red"></i> قائمة الطلبات المستلمة
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                <button onclick="syncOrdersFromCloud(true)" class="text-xs bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> تحديث من Google
+                                </button>
+                                <button onclick="clearAllOrders()" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-trash"></i> مسح سجل الطلبات
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-rocket-black text-gray-400 text-xs uppercase border-b border-rocket-gray">
+                                    <tr>
+                                        <th class="p-4">رقم الطلب</th>
+                                        <th class="p-4">العميل والتواصل</th>
+                                        <th class="p-4">العنوان</th>
+                                        <th class="p-4">المنتجات المطلوبين</th>
+                                        <th class="p-4">المجموع</th>
+                                        <th class="p-4">طريقة الدفع</th>
+                                        <th class="p-4">الحالة</th>
+                                        <th class="p-4 text-center">واتساب</th>
+                                        <th class="p-4 text-center">حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-orders-table" class="divide-y divide-rocket-gray/40 text-gray-200">
+                                    <!-- Dynamic Orders -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admin-tab-settings" class="hidden space-y-6">
+    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
+        <div class="flex items-center gap-3 border-b border-rocket-gray pb-4">
+            <div class="w-10 h-10 rounded-xl bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white">إعدادات المتجر والطلبات</h3>
+                <p class="text-xs text-gray-400">رفع صورة الهيرو من الجهاز + حفظ الطلبات تلقائياً في Google Drive + إرسال واتساب.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">اسم المتجر / البراند</label>
+                <input type="text" id="setting-store-name" value="THE_ROCKET" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">عنوان الهيرو</label>
+                <input type="text" id="setting-hero-title" value="أطلق استايلك الخاطف" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-300 mb-1">الوصف الفرعي بالهيرو</label>
+                <input type="text" id="setting-hero-sub" value="تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+            </div>
+
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-rocket-gray space-y-3">
+                <label class="block text-xs font-bold text-rocket-red">صورة الهيرو من الجهاز</label>
+                <input type="file" id="setting-hero-file" accept="image/*" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white">
+                <input type="hidden" id="setting-hero-img">
+                <div class="flex items-center gap-4">
+                    <img id="hero-upload-preview" src="" alt="Hero preview" class="hidden w-32 h-20 object-cover rounded-xl border border-rocket-gray">
+                    <p class="text-[11px] text-gray-400">اختار الصورة من جهازك. سيتم ضغطها وحفظها داخل إعدادات المتجر، بدون كتابة رابط للصورة.</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-green-500/30 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-google-drive text-green-400"></i>
+                    <h4 class="font-bold text-white">Google Drive / Google Sheets للطلبات</h4>
+                </div>
+                <label class="block text-xs font-bold text-gray-300">رابط Google Apps Script Web App</label>
+                <input type="url" id="setting-google-apps-url" placeholder="https://script.google.com/macros/s/....../exec" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
+                <p class="text-[11px] text-gray-400">هذا هو الرابط الذي سنستخدمه لحفظ كل طلب في Google Drive/Sheets وإرجاع الطلبات للوحة الإدارة.</p>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="testGoogleCloudConnection()" class="px-4 py-2 bg-rocket-gray hover:bg-gray-700 text-white text-xs font-bold rounded-xl border border-gray-600"><i class="fa-solid fa-plug ml-1"></i> اختبار الربط</button>
+                    <button type="button" onclick="syncOrdersFromCloud(true)" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-xl"><i class="fa-solid fa-arrows-rotate ml-1"></i> جلب الطلبات الآن</button>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-rocket-black/60 p-4 rounded-xl border border-emerald-500/30 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <h4 class="font-bold text-white">واتساب</h4>
+                </div>
+                <label class="block text-xs font-bold text-gray-300">رقم واتساب استقبال الطلبات (برمز الدولة)</label>
+                <input type="text" id="setting-whatsapp-num" placeholder="2010xxxxxxxx" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono">
+                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                    <input type="checkbox" id="setting-auto-whatsapp" class="accent-emerald-500">
+                    <span>إظهار خيار إرسال الطلب مباشرة إلى واتساب أثناء إتمام الشراء</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+            <button onclick="saveAdminSettings()" class="px-6 py-3 bg-rocket-red hover:bg-rocket-redHover text-white font-bold text-xs rounded-xl shadow-lg">حفظ إعدادات المتجر والربط</button>
+        </div>
+    </div>
+</div>
+<!-- ADMIN TAB: GITHUB AUTO-SYNC -->
+<div id="admin-tab-github" class="hidden space-y-6">
+    <div class="bg-rocket-card p-6 rounded-2xl border border-rocket-gray/60 space-y-5">
+
+        <div class="flex items-center gap-3 border-b border-rocket-gray pb-4">
+            <div class="w-10 h-10 rounded-xl bg-rocket-red/20 text-rocket-red flex items-center justify-center font-bold text-xl">
+                <i class="fa-brands fa-github"></i>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-white">
+                    إعدادات المزامنة التلقائية مع GitHub Pages
+                </h3>
+
+                <p class="text-xs text-gray-400">
+                    ربط المتجر بـ GitHub API لتحديث الكود والمنتجات مباشرة في المستودع أونلاين
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-rocket-black/80 p-4 rounded-xl border border-rocket-red/30 space-y-2 text-xs text-gray-300 leading-relaxed">
+            <p class="font-bold text-white text-sm">
+                <i class="fa-solid fa-lightbulb text-rocket-red ml-1"></i>
+                كيف تعمل المزامنة التلقائية؟
+            </p>
+
+            <p>
+                عند إدخال بيانات GitHub ورمز الوصول الخاص بك (Personal Access Token)،
+                سيقوم المتجر بتحديث ملف
+                <code class="text-rocket-red">index.html</code>
+                في مستودعك تلقائياً عند إضافة أو تعديل أي منتج.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم المستخدم على GitHub (Username / Owner) *
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-owner"
+                    placeholder="مثال: elsaideltran"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم المستودع (Repository Name) *
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-repo"
+                    placeholder="مثال: the-rocket-store"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    اسم الفرع (Branch Name)
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-branch"
+                    value="main"
+                    placeholder="main أو master"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">
+                    مسار الملف بالمتجر (File Path)
+                </label>
+
+                <input
+                    type="text"
+                    id="setting-gh-path"
+                    value="index.html"
+                    placeholder="index.html"
+                    class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none font-mono"
+                >
+            </div>
+
+            <div class="md:col-span-2 bg-green-950/20 p-4 rounded-xl border border-green-500/30">
+                <p class="text-xs text-green-300 leading-relaxed">
+                    <i class="fa-solid fa-shield-halved ml-1"></i>
+                    حماية GitHub مفعّلة من خلال Vercel Serverless API. لا تضع GitHub Token داخل المتجر.
+                    أضف <code>GITHUB_TOKEN</code> و <code>ADMIN_PASSWORD</code> في Vercel Environment Variables.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-rocket-gray">
+
+            <span id="gh-sync-status" class="text-xs font-bold text-gray-400">
+                حالة الربط: غير مفعل
+            </span>
+
+            <div class="flex items-center gap-3">
+
+                <button
+                    type="button"
+                    onclick="testGitHubConnection()"
+                    class="px-4 py-2.5 bg-rocket-gray hover:bg-rocket-gray/80 text-white font-bold text-xs rounded-xl border border-gray-600 transition-all"
+                >
+                    <i class="fa-solid fa-plug ml-1"></i>
+                    اختبار الاتصال
+                </button>
+
+                <button
+                    type="button"
+                    onclick="syncToGitHub(true)"
+                    id="btn-manual-sync"
+                    class="px-6 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-2"
+                >
+                    <i class="fa-brands fa-github text-sm"></i>
+                    مزامنة وحفظ التغييرات على GitHub الآن 🚀
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+                <!-- ADMIN TAB 4: STATS -->
+                <div id="admin-tab-stats" class="hidden space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="p-6 bg-rocket-card rounded-2xl border border-rocket-gray/60 space-y-2">
+                            <span class="text-xs text-gray-400 font-bold">إجمالي المبيعات الفعلية</span>
+                            <h3 id="stat-total-revenue" class="text-3xl font-black text-rocket-red">$0.00</h3>
+                            <p class="text-[11px] text-green-400">محسوبة تلقائياً من طلبات العملاء</p>
+                        </div>
+
+                        <div class="p-6 bg-rocket-card rounded-2xl border border-rocket-gray/60 space-y-2">
+                            <span class="text-xs text-gray-400 font-bold">عدد الطلبات المكتملة</span>
+                            <h3 id="stat-total-orders" class="text-3xl font-black text-white">0 طلب</h3>
+                            <p class="text-[11px] text-gray-400">طلب حقيقي مسجل بالسيستم</p>
+                        </div>
+
+                        <div class="p-6 bg-rocket-card rounded-2xl border border-rocket-gray/60 space-y-2">
+                            <span class="text-xs text-gray-400 font-bold">حالة Google Cloud</span>
+                            <h3 id="stat-cloud-status" class="text-xl font-bold text-gray-300">غير مربوط</h3>
+                            <p class="text-[11px] text-gray-400">الطلبات المحفوظة في Google Drive / Sheets</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        
+        <!-- Sliding Content -->
+        <div id="cart-content" class="absolute top-0 bottom-0 left-0 w-full max-w-md bg-rocket-card border-r border-rocket-gray shadow-2xl p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
+            <div>
+                <div class="flex items-center justify-between border-b border-rocket-gray pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-rocket-red text-xl"></i>
+                        <h3 class="font-black text-white text-lg">سلة التسوق الخاصة بك</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white text-xl" title="إغلاق السلة">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Items Container -->
+                <div id="cart-items-list" class="space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-1">
+                    <!-- Dynamic Cart Items -->
+                </div>
+            </div>
+
+            <!-- Cart Footer Summary -->
+            <div class="border-t border-rocket-gray pt-4 space-y-4">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-400">المجموع الفرعي:</span>
+                    <span id="cart-subtotal" class="font-black text-white text-lg">$0.00</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                    <span>الشحن:</span>
+                    <span class="text-rocket-red font-bold">مجاني بمناسبة الإطلاق 🔥</span>
+                </div>
+
+                <button onclick="openCheckoutModal()" class="w-full py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transition-all flex items-center justify-center gap-2">
+                    إتمام الشراء والطلب الان <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeCheckoutModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative bg-rocket-card border border-rocket-gray rounded-2xl max-w-lg w-full p-6 z-10 space-y-5 max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl">
+            <div class="flex items-center justify-between border-b border-rocket-gray pb-3">
+                <h3 class="font-black text-white text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-truck-fast text-rocket-red"></i> إتمام الشراء وتأكيد الطلب
+                </h3>
+                <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Order Summary Preview -->
+            <div id="checkout-summary" class="bg-rocket-black p-4 rounded-xl border border-rocket-gray text-xs space-y-2">
+                <!-- Summary inserted via JS -->
+            </div>
+
+            <!-- Checkout form: saves locally + Google Drive, with optional WhatsApp -->
+            <form id="checkout-form" onsubmit="submitOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">الاسم الكامل *</label>
+                    <input type="text" id="order-name" name="الاسم كامل" required placeholder="مثال: أحمد محمد" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">رقم الهاتف (للتواصل والتوصيل) *</label>
+                    <input type="tel" id="order-phone" name="رقم الهاتف" required placeholder="010xxxxxxxx" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">العنوان والمحافظة بالتفصيل *</label>
+                    <textarea id="order-address" name="العنوان بالتفصيل" rows="2" required placeholder="المحافظة، المدينة، اسم الشارع، رقم المبنى..." class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">طريقة الدفع</label>
+                    <select id="order-payment" name="طريقة الدفع" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white focus:border-rocket-red focus:outline-none">
+                        <option value="الدفع عند الاستلام (COD)">الدفع عند الاستلام (Cash on Delivery)</option>
+                        <option value="بطاقة إلكترونية / فيزا">بطاقة إلكترونية / فيزا</option>
+                        <option value="محفظة إلكترونية / فودافون كاش">محفظة إلكترونية / فودافون كاش</option>
+                    </select>
+                </div>
+
+                <div class="pt-2 space-y-2">
+                    <button type="submit" id="submit-order-btn" class="w-full py-4 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg shadow-rocket-red/30 transition-all text-sm flex items-center justify-center gap-2">
+                        <span>تأكيد الطلب وحفظه في النظام 🚀</span>
+                    </button>
+                    
+                    <button type="button" id="checkout-whatsapp-btn" onclick="submitOrderViaWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all text-xs flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> تأكيد الطلب وإرساله عبر واتساب
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeProductModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative bg-rocket-card border border-rocket-gray rounded-2xl max-w-2xl w-full p-6 z-10 space-y-6 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl" title="إغلاق">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-product-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Modal Details injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div onclick="toggleSearchModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative bg-rocket-card border border-rocket-gray rounded-2xl max-w-xl w-full p-4 z-10 shadow-2xl">
+            <div class="flex items-center gap-3 border-b border-rocket-gray pb-3">
+                <i class="fa-solid fa-magnifying-glass text-rocket-red"></i>
+                <input type="text" id="search-input" onkeyup="handleSearch(this.value)" placeholder="ابحث عن هودي، سويت بانتس، كاب..." class="w-full bg-transparent text-white font-medium focus:outline-none text-sm">
+                <button onclick="toggleSearchModal()" class="text-gray-400 text-sm">إلغاء</button>
+            </div>
+            <div id="search-results" class="mt-4 space-y-2 max-h-60 overflow-y-auto custom-scrollbar">
+                <!-- Results -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-rocket-black border-t border-rocket-gray/60 py-12 text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🚀</span>
+                    <span class="text-xl font-black text-white">THE_ROCKET</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    العلامة الرائدة لملابس الـ Streetwear الشبابية بعمر 20-35 سنة. تصميمات عصرية جنيسة للشارع العربي بأعلى معايير الجودة.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider text-rocket-red">روابط سريعة</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="navigateTo('home')" class="hover:text-white transition-colors">الرئيسية</button></li>
+                    <li><button onclick="navigateTo('shop')" class="hover:text-white transition-colors">كافة المنتجات</button></li>
+                    
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider text-rocket-red">الأقسام الرئيسية</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="filterCategory('hoodies'); navigateTo('home')" class="hover:text-white transition-colors">هوديز أوفرسايز</button></li>
+                    <li><button onclick="filterCategory('sweatpants'); navigateTo('home')" class="hover:text-white transition-colors">سويت بانتس رياضية</button></li>
+                    <li><button onclick="filterCategory('caps'); navigateTo('home')" class="hover:text-white transition-colors">كابات مطرزة</button></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider text-rocket-red">تواصل معنا</h4>
+                <div class="flex items-center gap-3 text-lg text-gray-300">
+                    <a href="#" class="hover:text-rocket-red"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-rocket-red"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-rocket-red"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+                <button onclick="copyStoreLink()" class="text-xs text-gray-400 hover:text-rocket-red flex items-center gap-1 mt-2">
+                    <i class="fa-solid fa-link text-rocket-red"></i> نسخ رابط المتجر المباشر
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 border-t border-rocket-gray/40 pt-6 text-center text-xs text-gray-500">
+            جميع الحقوق محفوظة © 2026 <strong>THE_ROCKET STREETWEAR</strong>.
+        </div>
+    </footer>
+
+    <!-- Secret Admin Password Modal -->
+    <div id="admin-pass-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeAdminPassModal()" class="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
+        <div class="relative bg-rocket-card border border-rocket-red/50 rounded-2xl max-w-sm w-full p-6 z-10 space-y-4 shadow-2xl text-center">
+            <div class="w-12 h-12 rounded-full bg-rocket-red/20 text-rocket-red flex items-center justify-center mx-auto text-xl font-bold">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 class="font-black text-white text-lg">منطقة الإدارة السرية</h3>
+            <p class="text-xs text-gray-400">أدخل كلمة المرور الخاصة بالمدير للوصول للوحة التحكم</p>
+            <div>
+                <input type="password" id="admin-pass-input" placeholder="كلمة مرور الإدارة" class="w-full bg-rocket-black border border-rocket-gray rounded-xl p-3 text-sm text-white text-center focus:border-rocket-red focus:outline-none tracking-widest" onkeyup="if(event.key==='Enter') verifyAdminPass()">
+            </div>
+            <div class="flex gap-2">
+                <button onclick="closeAdminPassModal()" class="w-1/2 py-2.5 bg-rocket-gray text-gray-300 text-xs font-bold rounded-xl">إلغاء</button>
+                <button onclick="verifyAdminPass()" class="w-1/2 py-2.5 bg-rocket-red hover:bg-rocket-redHover text-white text-xs font-bold rounded-xl shadow-lg">دخول 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initial Products Catalog with EGP Currency Values
+        const initialProducts = [
+          {
+                    "id": "p-1789780881716",
+                    "title": "hoodie",
+                    "category": "hoodies",
+                    "price": 500,
+                    "badge": "",
+                    "image": "https://placehold.co/800x1000/141419/ff1e38?text=Rocket+Hoodie",
+                    "desc": "bb"
+          },
+          {
+                    "id": "p-1789780216467",
+                    "title": "hoodie",
+                    "category": "hoodies",
+                    "price": 200,
+                    "badge": "BESTSELLAR",
+                    "image": "https://placehold.co/800x1000/141419/ff1e38?text=Rocket+Hoodie",
+                    "desc": "good"
+          },
+          {
+                    "id": "p-1789779811247",
+                    "title": "gg",
+                    "category": "hoodies",
+                    "price": 333,
+                    "badge": "",
+                    "image": "https://placehold.co/800x1000/141419/ff1e38?text=Rocket+Hoodie",
+                    "desc": "ddd"
+          },
+          {
+                    "id": "p-1789779273441",
+                    "title": "hoo",
+                    "category": "hoodies",
+                    "price": 488,
+                    "badge": "a7aa",
+                    "image": "https://raw.githubusercontent.com/elsaideltran4-ux/elsaro5/main/images/products/1789865030236-elsaro5.png",
+                    "desc": "aaaa"
+          },
+          {
+                    "id": "p1",
+                    "title": "Aero-Velocity Heavy Hoodie",
+                    "category": "hoodies",
+                    "price": 1250,
+                    "badge": "BESTSELLER 🔥",
+                    "image": "https://raw.githubusercontent.com/elsaideltran4-ux/elsaro5/main/images/products/1789864197037-WhatsApp-Image-2026-09-19-at-4.08.12-AM.jpeg",
+                    "desc": "هودي أوفرسايز من القطن المُمشط 100% بسُمك 420 GSM. يتميز بطباعة فوسفورية حمراء على الظهر بشعار الصاروخ وطوق مريح ومزدوج."
+          },
+          {
+                    "id": "p2",
+                    "title": "Urban Kinetic Cargo Sweatpants",
+                    "category": "sweatpants",
+                    "price": 850,
+                    "badge": "NEW DROP ✨",
+                    "image": "https://raw.githubusercontent.com/elsaideltran4-ux/elsaro5/main/images/products/1789864234316-881f6d9b20d541b69430754eec490e4d.jpg.webp",
+                    "desc": "بنطال سويت بانتس بقصة ستريت وير مريحة جداً، يحتوي على جيوب جانبية تقنية وشريط مطاطي عند الكاحل مع شعار الروبوت المطرز باللون الأحمر."
+          },
+          {
+                    "id": "p3",
+                    "title": "Cyber-Edge Strapback Cap",
+                    "category": "caps",
+                    "price": 350,
+                    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80",
+                    "badge": "EXCLUSIVE",
+                    "desc": "كاب رياضي عصري بشعار ذا روكيت الأيقوني المطرز بشكل نافر (3D Embroidery). خامة قماشية متينة ومزود بقفل معدني خلفي قابل للتعديل."
+          },
+          {
+                    "id": "p4",
+                    "title": "Red-Line Heavyweight Oversized Hoodie",
+                    "category": "hoodies",
+                    "price": 1350,
+                    "image": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80",
+                    "badge": "LIMITED DROP",
+                    "desc": "هودي ثقيل باللون الأحمر الناري الجريء مع خطوط عاكسة للضوء على الأكمام. تصميم عصري يعبر عن شخصية الشارع الحقيقية."
+          }        ];
+
+        // ألوان افتراضية للمنتجات التي لا تحتوي على قائمة ألوان مخصصة.
+        // يمكن تخصيصها لاحقاً من بيانات المنتج.
+        initialProducts.forEach(product => {
+            if (!Array.isArray(product.colors) || product.colors.length === 0) {
+                product.colors = ['أسود', 'أبيض', 'أحمر'];
+            }
+        });
+
+        // Secret Admin Clicks Counter
+        let logoClickCount = 0;
+        let logoClickTimer = null;
+
+        // Safe Storage Helper
+        function getStorage(key, fallback) {
+            try {
+                const item = localStorage.getItem(key);
+                return item ? JSON.parse(item) : fallback;
+            } catch (e) {
+                console.warn('LocalStorage Read Error:', e);
+                return fallback;
+            }
+        }
+
+        let state = {
+            products: getStorage('rocket_products', initialProducts),
+            cart: getStorage('rocket_cart', []),
+            orders: getStorage('rocket_orders', []),
+            activeCategory: 'all',
+            storeSettings: getStorage('rocket_settings', {
+                name: 'THE_ROCKET',
+                heroTitle: 'أطلق استايلك الخاطف',
+                heroSub: 'تشكيلة هوديز، سويت بانتس، وكابات مصممة للشباب الجريء بعمر 20-35 سنة.',
+                heroImg: '',
+                googleAppsScriptUrl: '',
+                whatsappNum: '201270373555',
+                autoWhatsApp: true
+            })
+        };
+
+        document.addEventListener('change', (event) => {
+            if (event.target && event.target.id === 'setting-hero-file') {
+                const file = event.target.files && event.target.files[0];
+                const preview = document.getElementById('hero-upload-preview');
+                if (!file || !preview) return;
+                const reader = new FileReader();
+                reader.onload = () => { preview.src = reader.result; preview.classList.remove('hidden'); };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Initialize App on DOM Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            applyStoreSettings();
+            renderProducts();
+            updateCartUI();
+            renderAdminTable();
+            renderAdminOrders();
+            syncOrdersFromCloud(false);
+            setInterval(() => { if (!document.getElementById('view-admin')?.classList.contains('hidden')) syncOrdersFromCloud(false); }, 30000);
+
+            // Hash direct navigation check
+            checkHashRoute();
+            window.addEventListener('hashchange', checkHashRoute);
+        });
+
+        function checkHashRoute() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'admin') {
+                promptAdminLogin();
+            } else if (['shop', 'about', 'home'].includes(hash)) {
+                navigateTo(hash);
+            }
+        }
+
+        function handleLogoClick() {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+            if (logoClickCount >= 5) {
+                logoClickCount = 0;
+                promptAdminLogin();
+            } else {
+                logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
+                navigateTo('home');
+            }
+        }
+
+        function navigateTo(viewId) {
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`view-${viewId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (viewId === 'home' || viewId === 'shop') {
+                    renderProducts();
+                }
+            }
+        }
+
+        function copyStoreLink() {
+            const currentUrl = window.location.href.split('#')[0];
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    showToast("تم نسخ رابط المتجر بنجاح! جاهز للمشاركة 🚀");
+                }).catch(() => fallbackCopyText(currentUrl));
+            } else {
+                fallbackCopyText(currentUrl);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast("تم نسخ رابط المتجر المباشر! 🚀");
+        }
+
+        function promptAdminLogin() {
+            document.getElementById('admin-pass-modal').classList.remove('hidden');
+            const passInput = document.getElementById('admin-pass-input');
+            if (passInput) {
+                passInput.value = '';
+                passInput.focus();
+            }
+        }
+
+        function closeAdminPassModal() {
+            document.getElementById('admin-pass-modal').classList.add('hidden');
+            if (window.location.hash === '#admin') {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+        }
+
+        async function adminApi(action, payload = {}) {
+            const password = sessionStorage.getItem('rocket_admin_session') || '';
+            const response = await fetch('/api/admin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action, password, ...payload })
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) throw new Error(data.message || 'تعذر تنفيذ العملية');
+            return data;
+        }
+
+        async function verifyAdminPass() {
+            const entered = document.getElementById('admin-pass-input').value;
+            if (!entered) return showToast('اكتب كلمة المرور أولاً.');
+            try {
+                await fetch('/api/admin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'login', password: entered })
+                }).then(async r => { const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.message || 'كلمة المرور غير صحيحة'); });
+                sessionStorage.setItem('rocket_admin_session', entered);
+                closeAdminPassModal();
+                navigateTo('admin');
+                showToast('مرحباً بك في لوحة الإدارة 🚀');
+            } catch (err) {
+                showToast(err.message || 'كلمة المرور غير صحيحة!');
+            }
+        }
+
+        function applyStoreSettings() {
+            const brandEl = document.getElementById('nav-brand-name');
+            if (brandEl) brandEl.innerText = state.storeSettings.name;
+
+            const titleEl = document.getElementById('hero-title');
+            if (titleEl) titleEl.innerHTML = `${state.storeSettings.heroTitle} <br><span class="text-rocket-red glow-text">${state.storeSettings.name} STREETWEAR</span>`;
+
+            const subEl = document.getElementById('hero-subtitle');
+            if (subEl) subEl.innerText = state.storeSettings.heroSub;
+
+            const imgEl = document.getElementById('hero-image');
+            if (imgEl && state.storeSettings.heroImg) imgEl.src = state.storeSettings.heroImg;
+
+            const sWhatsapp = document.getElementById('setting-whatsapp-num');
+            if (sWhatsapp) sWhatsapp.value = state.storeSettings.whatsappNum || '';
+            const sGoogle = document.getElementById('setting-google-apps-url');
+            if (sGoogle) sGoogle.value = state.storeSettings.googleAppsScriptUrl || '';
+            const sAutoWa = document.getElementById('setting-auto-whatsapp');
+            if (sAutoWa) sAutoWa.checked = state.storeSettings.autoWhatsApp !== false;
+
+            const sName = document.getElementById('setting-store-name');
+            if (sName) sName.value = state.storeSettings.name;
+            const sTitle = document.getElementById('setting-hero-title');
+            if (sTitle) sTitle.value = state.storeSettings.heroTitle;
+            const sSub = document.getElementById('setting-hero-sub');
+            if (sSub) sSub.value = state.storeSettings.heroSub;
+            const sImg = document.getElementById('setting-hero-img');
+            if (sImg) sImg.value = state.storeSettings.heroImg || '';
+            const preview = document.getElementById('hero-upload-preview');
+            if (preview && state.storeSettings.heroImg) { preview.src = state.storeSettings.heroImg; preview.classList.remove('hidden'); }
+
+            const cloudStat = document.getElementById('stat-cloud-status');
+            if (cloudStat) cloudStat.innerText = state.storeSettings.googleAppsScriptUrl ? 'مُعد ✓' : 'غير مربوط';
+
+            const waBtn = document.getElementById('checkout-whatsapp-btn');
+            if (waBtn) waBtn.classList.toggle('hidden', state.storeSettings.autoWhatsApp === false);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const fullGrid = document.getElementById('full-shop-grid');
+            
+            const filtered = state.activeCategory === 'all' 
+                ? state.products 
+                : state.products.filter(p => p.category === state.activeCategory);
+
+            const cardHTML = (p) => `
+                <div class="group bg-rocket-card border border-rocket-gray/60 rounded-2xl overflow-hidden hover:border-rocket-red/60 transition-all duration-300 cursor-pointer" onclick="openProductModal('${p.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); openProductModal('${p.id}'); }">
+                    <div class="relative overflow-hidden">
+                        ${p.badge ? `<span class="absolute top-3 right-3 z-10 bg-rocket-red text-white text-[10px] font-black px-2.5 py-1 rounded-md tracking-wider">${p.badge}</span>` : ''}
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=No+Image';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                        <div class="absolute bottom-3 left-3 z-10 bg-rocket-black/90 backdrop-blur-sm border border-white/10 rounded-xl px-3.5 py-2 shadow-lg pointer-events-none">
+                            <span class="text-xs text-gray-300 block leading-none mb-1">السعر</span>
+                            <span class="text-rocket-red font-black text-lg leading-none">${Number(p.price).toLocaleString('ar-EG')} ج.م</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (grid) grid.innerHTML = filtered.length > 0 ? filtered.map(cardHTML).join('') : '<p class="col-span-4 text-center text-gray-400 py-8">لا توجد منتجات متوفرة في هذا القسم حالياً.</p>';
+            if (fullGrid) fullGrid.innerHTML = state.products.map(cardHTML).join('');
+        }
+
+        function filterCategory(cat) {
+            state.activeCategory = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                const targetCat = btn.getAttribute('data-cat');
+                if (targetCat === cat) {
+                    btn.classList.remove('bg-rocket-card', 'text-gray-400');
+                    btn.classList.add('bg-rocket-red', 'text-white');
+                } else {
+                    btn.classList.remove('bg-rocket-red', 'text-white');
+                    btn.classList.add('bg-rocket-card', 'text-gray-400');
+                }
+            });
+            renderProducts();
+        }
+
+        // اختيارات المنتج داخل نافذة التفاصيل
+        let selectedProductSize = null;
+        let selectedProductColor = null;
+        let selectedProductQty = 1;
+
+        function selectProductSize(size) {
+            selectedProductSize = size;
+
+            document.querySelectorAll('#modal-product-content .size-option').forEach(btn => {
+                const isSelected = btn.dataset.size === size;
+                btn.classList.toggle('bg-rocket-red', isSelected);
+                btn.classList.toggle('border-rocket-red', isSelected);
+                btn.classList.toggle('font-bold', isSelected);
+                btn.classList.toggle('bg-rocket-black', !isSelected);
+                btn.classList.toggle('border-rocket-gray', !isSelected);
+            });
+
+            const label = document.getElementById('selected-size-label');
+            if (label) label.textContent = `المقاس المختار: ${size}`;
+        }
+
+        function selectProductColor(color) {
+            selectedProductColor = color;
+
+            document.querySelectorAll('#modal-product-content .color-option').forEach(btn => {
+                const isSelected = btn.dataset.color === color;
+                btn.classList.toggle('bg-rocket-red', isSelected);
+                btn.classList.toggle('border-rocket-red', isSelected);
+                btn.classList.toggle('font-bold', isSelected);
+                btn.classList.toggle('bg-rocket-black', !isSelected);
+                btn.classList.toggle('border-rocket-gray', !isSelected);
+            });
+
+            const label = document.getElementById('selected-color-label');
+            if (label) label.textContent = `اللون المختار: ${color}`;
+        }
+
+        function changeProductQty(change) {
+            selectedProductQty = Math.max(1, Math.min(99, selectedProductQty + change));
+            const qtyEl = document.getElementById('product-qty');
+            if (qtyEl) qtyEl.textContent = selectedProductQty;
+            const addBtn = document.getElementById('modal-add-to-cart-btn');
+            if (addBtn) addBtn.innerHTML = `إضافة ${selectedProductQty > 1 ? `(${selectedProductQty}) ` : ''}إلى السلة 🚀`;
+            updateProductTotal();
+        }
+
+        function updateProductTotal() {
+            const priceEl = document.getElementById('product-unit-price');
+            const totalEl = document.getElementById('product-total-price');
+            const product = window.currentModalProduct;
+            if (!product) return;
+            if (priceEl) priceEl.textContent = `${Number(product.price).toLocaleString('ar-EG')} ج.م`;
+            if (totalEl) totalEl.textContent = `${Number(product.price * selectedProductQty).toLocaleString('ar-EG')} ج.م`;
+        }
+
+        function addToCart(productId, size = selectedProductSize, color = selectedProductColor, qty = selectedProductQty) {
+            const product = state.products.find(p => p.id === productId);
+            if (!product) return;
+
+            if (!size) {
+                showToast('من فضلك اختر المقاس أولاً 👕');
+                return;
+            }
+            if (!color) {
+                showToast('من فضلك اختر اللون أولاً 🎨');
+                return;
+            }
+
+            qty = Math.max(1, Number(qty) || 1);
+
+            // نفس المنتج بمقاس ولون مختلف = عنصر مستقل في السلة
+            const existingIndex = state.cart.findIndex(item =>
+                item.id === productId && item.size === size && item.color === color
+            );
+
+            if (existingIndex > -1) {
+                state.cart[existingIndex].qty += qty;
+            } else {
+                state.cart.push({ ...product, size, color, qty });
+            }
+
+            saveCart();
+            updateCartUI();
+            showToast(`تمت إضافة ${qty} قطعة من "${product.title}" — ${size} / ${color} 🔥`);
+        }
+
+        function updateCartQty(id, change, size = null, color = null) {
+            const item = state.cart.find(i => i.id === id &&
+                (size === null || i.size === size) &&
+                (color === null || i.color === color)
+            );
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    state.cart = state.cart.filter(i => !(
+                        i.id === id &&
+                        (size === null || i.size === size) &&
+                        (color === null || i.color === color)
+                    ));
+                }
+                saveCart();
+                updateCartUI();
+            }
+        }
+
+        function saveCart() {
+            try {
+                localStorage.setItem('rocket_cart', JSON.stringify(state.cart));
+            } catch (e) {
+                console.error("Cart save error:", e);
+            }
+        }
+
+        function updateCartUI() {
+            const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) badge.innerText = totalItems;
+
+            const subtotal = document.getElementById('cart-subtotal');
+            if (subtotal) subtotal.innerText = `${totalPrice.toLocaleString('ar-EG')} ج.م`;
+
+            const list = document.getElementById('cart-items-list');
+            if (!list) return;
+
+            if (state.cart.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-rocket-gray"></i>
+                        <p class="text-sm text-gray-400">سلتك فارغة حالياً</p>
+                    </div>
+                `;
+            } else {
+                list.innerHTML = state.cart.map(item => `
+                    <div class="flex items-center gap-3 p-3 bg-rocket-black rounded-xl border border-rocket-gray/40">
+                        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-lg">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-white text-xs line-clamp-1">${item.title}</h4>
+                            <span class="text-[11px] text-gray-400 block">المقاس: ${item.size || 'غير محدد'} · اللون: ${item.color || 'غير محدد'}</span>
+                            <span class="text-xs text-rocket-red font-bold block">${Number(item.price).toLocaleString('ar-EG')} ج.م × ${item.qty} = ${(item.price * item.qty).toLocaleString('ar-EG')} ج.م</span>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="updateCartQty('${item.id}', -1, '${item.size || ''}', '${item.color || ''}')" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">-</button>
+                                <span class="text-xs font-bold text-white px-1">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1, '${item.size || ''}', '${item.color || ''}')" class="w-6 h-6 rounded bg-rocket-gray text-white flex items-center justify-center font-bold text-xs hover:bg-rocket-red">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const content = document.getElementById('cart-content');
+            if (!drawer || !content) return;
+            
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('opacity-0');
+                    content.classList.remove('-translate-x-full');
+                }, 10);
+            } else {
+                drawer.classList.add('opacity-0');
+                content.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function openCheckoutModal() {
+            if (state.cart.length === 0) {
+                showToast("سلة التسوق فارغة! أضف منتجات أولاً.");
+                return;
+            }
+
+            toggleCartDrawer();
+
+            const summaryDiv = document.getElementById('checkout-summary');
+            const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            if (summaryDiv) {
+                summaryDiv.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-rocket-gray/60 pb-2 mb-2 font-bold text-white">
+                        <span>المنـتجات (${state.cart.reduce((s,i)=>s+i.qty,0)}):</span>
+                        <span class="text-rocket-red">${totalPrice.toLocaleString('ar-EG')} ج.م</span>
+                    </div>
+                    ${state.cart.map(item => `
+                        <div class="flex justify-between text-gray-300">
+                            <span class="line-clamp-1">${item.title} — ${item.size || 'غير محدد'} / ${item.color || 'غير محدد'} × ${item.qty}</span>
+                            <span class="font-bold text-white">${(item.price * item.qty).toLocaleString('ar-EG')} ج.م</span>
+                        </div>
+                    `).join('')}
+                    <div class="pt-2 border-t border-rocket-gray/60 flex justify-between font-black text-sm text-white">
+                        <span>الإجمالي النهـائي:</span>
+                        <span class="text-rocket-red">${totalPrice.toLocaleString('ar-EG')} ج.م</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        async function submitOrder(e) {
+            e.preventDefault();
+            await finalizeOrder(false);
+        }
+
+        async function finalizeOrder(sendWhatsApp = false) {
+            if (state.cart.length === 0) {
+                showToast("سلة التسوق فارغة!");
+                closeCheckoutModal();
+                return;
+            }
+
+            const name = document.getElementById('order-name').value.trim();
+            const phone = document.getElementById('order-phone').value.trim();
+            const address = document.getElementById('order-address').value.trim();
+            const payment = document.getElementById('order-payment').value;
+            if (!name || !phone || !address) {
+                showToast("يرجى ملء الاسم ورقم الهاتف والعنوان أولاً!");
+                return;
+            }
+
+            const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const newOrder = {
+                id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+                date: new Date().toISOString(),
+                customer: { name, phone, address },
+                items: [...state.cart],
+                total: totalPrice,
+                paymentMethod: payment,
+                status: 'جديد 🚀',
+                source: sendWhatsApp ? 'المتجر + واتساب' : 'المتجر'
+            };
+
+            state.orders.unshift(newOrder);
+            try { localStorage.setItem('rocket_orders', JSON.stringify(state.orders)); } catch (err) {}
+            renderAdminOrders();
+
+            const submitBtn = document.getElementById('submit-order-btn');
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<span>جاري حفظ الطلب... ⏳</span>'; }
+
+            const cloudOk = await syncOrderToCloud(newOrder);
+
+            if (sendWhatsApp) openOrderWhatsApp(newOrder);
+
+            state.cart = [];
+            saveCart();
+            updateCartUI();
+            closeCheckoutModal();
+            renderAdminOrders();
+
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = '<span>تأكيد الطلب وحفظه في النظام 🚀</span>'; }
+            showToast(cloudOk ? `تم حفظ الطلب في النظام وGoogle Drive! رقم الطلب: ${newOrder.id} 🎉` : `تم تسجيل الطلب محلياً. رقم الطلب: ${newOrder.id}`);
+        }
+
+        async function submitOrderViaWhatsApp() {
+            await finalizeOrder(true);
+        }
+
+        function openOrderWhatsApp(order) {
+            const total = Number(order.total || 0).toLocaleString('ar-EG');
+            const items = (order.items || []).map(i => `• ${i.title} — مقاس ${i.size || 'غير محدد'} — لون ${i.color || 'غير محدد'} — ${i.qty} × ${Number(i.price).toLocaleString('ar-EG')} = ${(i.price*i.qty).toLocaleString('ar-EG')} ج.م`).join('\n');
+            const message = `🚀 طلب جديد من ${state.storeSettings.name}\n\nرقم الطلب: ${order.id}\nالعميل: ${order.customer.name}\nالهاتف: ${order.customer.phone}\nالعنوان: ${order.customer.address}\nالدفع: ${order.paymentMethod}\n\nالمنتجات:\n${items}\n\nالإجمالي: ${total} ج.م`;
+            const targetNum = (state.storeSettings.whatsappNum || '').replace(/\D/g, '');
+            if (!targetNum) { showToast('لم يتم ضبط رقم واتساب في الإعدادات.'); return; }
+            window.open(`https://wa.me/${targetNum}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        async function syncOrderToCloud(order) {
+            const endpoint = (state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) return false;
+            try {
+                const body = new URLSearchParams();
+                body.set('action', 'createOrder');
+                body.set('payload', JSON.stringify(order));
+                const res = await fetch(endpoint, { method: 'POST', body });
+                return res.ok;
+            } catch (err) {
+                console.error('Google Cloud order sync error:', err);
+                return false;
+            }
+        }
+
+        async function syncOrdersFromCloud(showMessage = false) {
+            const endpoint = (state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) {
+                if (showMessage) showToast('ضع رابط Google Apps Script من إعدادات الأدمن أولاً.');
+                return false;
+            }
+            try {
+                const url = endpoint + (endpoint.includes('?') ? '&' : '?') + 'action=listOrders';
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) throw new Error('فشل الاتصال بالخدمة السحابية');
+                const data = await res.json();
+                const remoteOrders = Array.isArray(data.orders) ? data.orders : [];
+                const map = new Map(state.orders.map(o => [o.id, o]));
+                remoteOrders.forEach(o => map.set(o.id, { ...map.get(o.id), ...o }));
+                state.orders = Array.from(map.values()).sort((a,b) => new Date(b.date) - new Date(a.date));
+                localStorage.setItem('rocket_orders', JSON.stringify(state.orders));
+                renderAdminOrders();
+                if (showMessage) showToast(`تم تحديث ${remoteOrders.length} طلب من Google بنجاح 🚀`);
+                return true;
+            } catch (err) {
+                console.error('Google Cloud orders fetch error:', err);
+                if (showMessage) showToast('تعذر جلب الطلبات من Google. راجع رابط Apps Script.');
+                return false;
+            }
+        }
+
+        async function testGoogleCloudConnection() {
+            const endpoint = (document.getElementById('setting-google-apps-url')?.value || state.storeSettings.googleAppsScriptUrl || '').trim();
+            if (!endpoint) { showToast('أدخل رابط Google Apps Script أولاً.'); return; }
+            try {
+                const url = endpoint + (endpoint.includes('?') ? '&' : '?') + 'action=ping';
+                const res = await fetch(url, { cache: 'no-store' });
+                const data = await res.json();
+                if (data.ok) {
+                    const stat = document.getElementById('stat-cloud-status');
+                    if (stat) stat.innerText = 'متصل ✓';
+                    showToast('تم الاتصال بـ Google بنجاح 🚀');
+                } else throw new Error('الخدمة لم تُرجع استجابة صحيحة');
+            } catch (err) {
+                showToast('فشل اختبار Google. تأكد من نشر Apps Script كـ Web App.');
+            }
+        }
+
+        function renderAdminOrders() {
+            const table = document.getElementById('admin-orders-table');
+            const ordersCount = document.getElementById('admin-orders-count');
+            const revStat = document.getElementById('stat-total-revenue');
+            const totalOrdersStat = document.getElementById('stat-total-orders');
+
+            if (ordersCount) ordersCount.innerText = state.orders.length;
+
+            const totalRev = state.orders.reduce((sum, ord) => sum + ord.total, 0);
+            if (revStat) revStat.innerText = `${totalRev.toLocaleString('ar-EG')} ج.م`;
+            if (totalOrdersStat) totalOrdersStat.innerText = `${state.orders.length} طلب`;
+
+            if (!table) return;
+
+            if (state.orders.length === 0) {
+                table.innerHTML = `<tr><td colspan="9" class="text-center py-8 text-gray-400">لا توجد طلبات مسجلة حتى الآن.</td></tr>`;
+            } else {
+                table.innerHTML = state.orders.map(o => `
+                    <tr class="hover:bg-rocket-black/50">
+                        <td class="p-4 font-mono text-xs text-rocket-red font-bold">${o.id}<br><span class="text-[10px] text-gray-400 font-sans">${o.date}</span></td>
+                        <td class="p-4 text-xs">
+                            <span class="font-bold text-white block">${o.customer.name}</span>
+                            <span class="text-gray-400">${o.customer.phone}</span>
+                        </td>
+                        <td class="p-4 text-xs text-gray-300 max-w-xs line-clamp-2">${o.customer.address}</td>
+                        <td class="p-4 text-xs text-gray-300">
+                            ${o.items.map(i => `<div>• ${i.title} — مقاس ${i.size || 'غير محدد'} — لون ${i.color || 'غير محدد'} (${i.qty})</div>`).join('')}
+                        </td>
+                        <td class="p-4 font-bold text-rocket-red text-xs">${o.total.toLocaleString('ar-EG')} ج.م</td>
+                        <td class="p-4 text-xs text-gray-300">${o.paymentMethod}</td>
+                        <td class="p-4 text-xs"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-md font-bold">${o.status}</span></td>
+                        <td class="p-4 text-center">
+                            <button onclick='openOrderWhatsApp(${JSON.stringify(o).replace(/'/g, "&#39;")})' class="p-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors" title="إرسال الطلب عبر واتساب"><i class="fa-brands fa-whatsapp"></i></button>
+                        </td>
+                        <td class="p-4 text-center">
+                            <button onclick="deleteOrder('${o.id}')" class="p-1.5 bg-rocket-gray hover:bg-red-700 text-white rounded-lg transition-colors"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function openProductModal(id) {
+            const product = state.products.find(p => p.id === id);
+            if (!product) return;
+
+            window.currentModalProduct = product;
+            selectedProductSize = null;
+            selectedProductColor = null;
+            selectedProductQty = 1;
+
+            const colors = Array.isArray(product.colors) && product.colors.length
+                ? product.colors
+                : ['أسود', 'أبيض', 'أحمر'];
+
+            const colorDot = (color) => {
+                const map = {
+                    'أسود': '#111827', 'أبيض': '#f9fafb', 'أحمر': '#ef233c',
+                    'أزرق': '#2563eb', 'أخضر': '#16a34a', 'رمادي': '#6b7280',
+                    'بيج': '#d6b98c', 'بني': '#8b5e3c', 'كحلي': '#1e3a5f'
+                };
+                return map[color] || '#9ca3af';
+            };
+
+            const modalContent = document.getElementById('modal-product-content');
+            if (modalContent) {
+                modalContent.innerHTML = `
+                    <div class="rounded-xl overflow-hidden bg-rocket-black border border-rocket-gray">
+                        <img src="${product.image}" alt="${product.title}" class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=No+Image';">
+                    </div>
+                    <div class="space-y-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-rocket-red uppercase tracking-wider">${product.category}</span>
+                            <h2 class="text-2xl font-black text-white mt-1">${product.title}</h2>
+                            <p class="text-xs text-gray-300 leading-relaxed mt-2">${product.desc || ''}</p>
+
+                            <div class="mt-4 p-4 bg-rocket-black rounded-xl border border-rocket-gray/60 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-gray-400">سعر القطعة</span>
+                                    <span id="product-unit-price" class="font-black text-white">${Number(product.price).toLocaleString('ar-EG')} ج.م</span>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-rocket-gray/50 pt-3">
+                                    <span class="text-xs text-gray-400">إجمالي الكمية</span>
+                                    <span id="product-total-price" class="text-xl font-black text-rocket-red">${Number(product.price).toLocaleString('ar-EG')} ج.م</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-4 border-t border-rocket-gray/50 space-y-2">
+                                <label class="block text-xs font-bold text-gray-300">اختر المقاس:</label>
+                                <div class="flex gap-2 flex-wrap" role="group" aria-label="اختيار المقاس">
+                                    ${['S','M','L','XL'].map(size => `<button type="button" data-size="${size}" onclick="selectProductSize('${size}')" class="size-option px-4 py-2 bg-rocket-black border border-rocket-gray rounded-lg text-xs hover:border-rocket-red text-white transition-all">${size}</button>`).join('')}
+                                </div>
+                                <p id="selected-size-label" class="text-[11px] text-gray-400">لم يتم اختيار مقاس بعد</p>
+                            </div>
+
+                            <div class="mt-4 space-y-2">
+                                <label class="block text-xs font-bold text-gray-300">اختر اللون:</label>
+                                <div class="flex gap-2 flex-wrap" role="group" aria-label="اختيار اللون">
+                                    ${colors.map(color => `<button type="button" data-color="${color}" onclick="selectProductColor('${color.replace(/'/g, "\'")}')" class="color-option px-3 py-2 bg-rocket-black border border-rocket-gray rounded-lg text-xs text-white transition-all flex items-center gap-2 hover:border-rocket-red"><span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background:${colorDot(color)}"></span>${color}</button>`).join('')}
+                                </div>
+                                <p id="selected-color-label" class="text-[11px] text-gray-400">لم يتم اختيار لون بعد</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between gap-4 p-3 bg-rocket-black rounded-xl border border-rocket-gray/60">
+                                <div>
+                                    <span class="block text-xs font-bold text-gray-300">الكمية</span>
+                                    <span class="text-[10px] text-gray-500">حدد عدد القطع المطلوبة</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" onclick="changeProductQty(-1)" class="w-9 h-9 rounded-lg bg-rocket-gray text-white font-black hover:bg-rocket-red">−</button>
+                                    <span id="product-qty" class="min-w-[24px] text-center text-lg font-black text-white">1</span>
+                                    <button type="button" onclick="changeProductQty(1)" class="w-9 h-9 rounded-lg bg-rocket-gray text-white font-black hover:bg-rocket-red">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="modal-add-to-cart-btn" onclick="if (!selectedProductSize) { showToast('من فضلك اختر المقاس أولاً 👕'); return; } if (!selectedProductColor) { showToast('من فضلك اختر اللون أولاً 🎨'); return; } addToCart('${product.id}', selectedProductSize, selectedProductColor, selectedProductQty); closeProductModal();" class="w-full py-3.5 bg-rocket-red hover:bg-rocket-redHover text-white font-black rounded-xl shadow-lg transition-all">
+                            إضافة ${selectedProductQty > 1 ? `(${selectedProductQty})` : ''} إلى السلة 🚀
+                        </button>
+                    </div>
+                `;
+            }
+
+            updateProductTotal();
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            if (modal) modal.classList.toggle('hidden');
+        }
+
+        function handleSearch(query) {
+            const resultsDiv = document.getElementById('search-results');
+            if (!resultsDiv) return;
+
+            if (!query.trim()) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            const matched = state.products.filter(p => 
+                p.title.toLowerCase().includes(query.toLowerCase()) || 
+                p.desc.toLowerCase().includes(query.toLowerCase())
+            );
+
+            resultsDiv.innerHTML = matched.map(p => `
+                <div onclick="openProductModal('${p.id}'); toggleSearchModal();" class="flex items-center gap-3 p-2 hover:bg-rocket-black rounded-lg cursor-pointer">
+                    <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';">
+                    <div>
+                        <h5 class="text-xs font-bold text-white">${p.title}</h5>
+                        <span class="text-[10px] text-rocket-red font-bold">${Number(p.price).toLocaleString('ar-EG')} ج.م</span>
+                    </div>
+                </div>
+            `).join('') || '<p class="text-xs text-gray-400 p-2">لم نجد منتجات تطابق البحث.</p>';
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function switchAdminTab(tab) {
+            const tabs = ['products', 'orders', 'settings', 'github', 'stats'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`admin-tab-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (el) el.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('text-rocket-red', 'border-b-2', 'border-rocket-red');
+                    btn.classList.add('text-gray-400');
+                }
+            });
+
+            const activeEl = document.getElementById(`admin-tab-${tab}`);
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-400');
+                activeBtn.classList.add('text-rocket-red', 'border-b-2', 'border-rocket-red');
+            }
+        }
+async function uploadImageToGitHub(file, folder = 'images') {
+    if (!file) return '';
+    const { ghOwner, ghRepo, ghBranch } = state.storeSettings;
+    if (!ghOwner || !ghRepo) throw new Error('أدخل Owner و Repository أولاً');
+    const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+    const data = await adminApi('upload_image', {
+        owner: ghOwner, repo: ghRepo, branch: ghBranch || 'main', folder, fileName: file.name, dataUrl
+    });
+    return data.download_url;
+}
+        async function handleProductSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('admin-prod-id').value;
+            const title = document.getElementById('admin-prod-title').value.trim();
+            const category = document.getElementById('admin-prod-category').value;
+            const price = parseFloat(document.getElementById('admin-prod-price').value) || 0;
+            const badge = document.getElementById('admin-prod-badge').value.trim();
+let image = document.getElementById('admin-prod-image').value.trim();
+const imageFile = document.getElementById('admin-prod-image-file').files[0];
+const desc = document.getElementById('admin-prod-desc').value.trim();
+
+try {
+    if (imageFile) {
+        showToast("جاري رفع صورة المنتج إلى GitHub... ⏳");
+        image = await uploadImageToGitHub(imageFile, 'images/products');
+
+        document.getElementById('admin-prod-image').value = image;
+    }
+
+    if (!image) {
+        showToast("من فضلك اختر صورة للمنتج!");
+        return;
+    }
+} catch (err) {
+    console.error("Image upload error:", err);
+    showToast("فشل رفع صورة المنتج: " + err.message);
+    return;
+}
+            
+            
+
+            if (id) {
+                const index = state.products.findIndex(p => p.id === id);
+                if (index > -1) {
+                    state.products[index] = { id, title, category, price, badge, image, desc };
+                    showToast("تم تحديث بيانات المنتج بنجاح 🚀");
+                }
+            } else {
+                const newProd = {
+                    id: 'p-' + Date.now(),
+                    title, category, price, badge, image, desc
+                };
+                state.products.unshift(newProd);
+                showToast("تمت إضافة المنتج الجديد بنجاح 🚀");
+            }
+
+            saveProducts();
+            resetProductForm();
+            renderAdminTable();
+            renderProducts();
+        }
+
+        function editProduct(id) {
+            const prod = state.products.find(p => p.id === id);
+            if (!prod) return;
+
+            document.getElementById('admin-prod-id').value = prod.id;
+            document.getElementById('admin-prod-title').value = prod.title;
+            document.getElementById('admin-prod-category').value = prod.category;
+            document.getElementById('admin-prod-price').value = prod.price;
+            document.getElementById('admin-prod-badge').value = prod.badge || '';
+            document.getElementById('admin-prod-image').value = prod.image;
+            document.getElementById('admin-prod-desc').value = prod.desc;
+
+            const formTitle = document.getElementById('form-title');
+            if (formTitle) formTitle.innerHTML = `<i class="fa-solid fa-pen text-rocket-red"></i> تعديل بيانات المنتج (${prod.title})`;
+
+            const formEl = document.getElementById('product-form');
+            if (formEl) window.scrollTo({ top: formEl.offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function deleteProduct(id) {
+            state.products = state.products.filter(p => p.id !== id);
+            saveProducts();
+            renderAdminTable();
+            renderProducts();
+            showToast("تم حذف المنتج من المتجر.");
+        }
+
+        function resetProductForm() {
+            const form = document.getElementById('product-form');
+            if (form) form.reset();
+            document.getElementById('admin-prod-id').value = '';
+            const formTitle = document.getElementById('form-title');
+            if (formTitle) formTitle.innerHTML = `<i class="fa-solid fa-plus-circle text-rocket-red"></i> إضافة منتج جديد للمتجر`;
+        }
+
+        function saveProducts() {
+    try {
+        localStorage.setItem('rocket_products', JSON.stringify(state.products));
+        
+        if (state.storeSettings.ghOwner && state.storeSettings.ghRepo) {
+            syncToGitHub(false);
+        }
+
+        renderProducts();
+        renderAdminTable();
+
+        showToast("تم حفظ المنتجات بنجاح 🚀");
+    } catch (e) {
+        console.error("Product save error:", e);
+        showToast("حدث خطأ أثناء حفظ المنتج!");
+    }
+}
+        function saveGitHubInputs() {
+            state.storeSettings = {
+                ...state.storeSettings,
+                ghOwner: (document.getElementById('setting-gh-owner')?.value || '').trim(),
+                ghRepo: (document.getElementById('setting-gh-repo')?.value || '').trim(),
+                ghBranch: (document.getElementById('setting-gh-branch')?.value || 'main').trim(),
+                ghPath: (document.getElementById('setting-gh-path')?.value || 'index.html').trim()
+            };
+            localStorage.setItem('rocket_settings', JSON.stringify(state.storeSettings));
+        }
+
+async function testGitHubConnection() {
+    saveGitHubInputs();
+    const { ghOwner, ghRepo, ghBranch, ghPath } = state.storeSettings;
+    if (!ghOwner || !ghRepo) return showToast('أدخل اسم المستخدم والمستودع أولاً.');
+    try {
+        await adminApi('test_github', { owner: ghOwner, repo: ghRepo, branch: ghBranch || 'main', path: ghPath || 'index.html' });
+        showToast('تم الاتصال بـ GitHub بنجاح! 🚀');
+        updateGitHubStatusUI();
+    } catch (e) { showToast(e.message || 'فشل الاتصال بـ GitHub'); }
+}
+
+let githubSyncInProgress = false;
+
+async function syncToGitHub(manualTrigger = false) {
+    if (githubSyncInProgress) { if (manualTrigger) showToast('المزامنة قيد التنفيذ بالفعل، انتظر لحظات...'); return; }
+    githubSyncInProgress = true;
+    saveGitHubInputs();
+    const { ghOwner, ghRepo, ghBranch, ghPath } = state.storeSettings;
+    if (!ghOwner || !ghRepo) { githubSyncInProgress = false; if (manualTrigger) showToast('أدخل بيانات GitHub أولاً.'); return; }
+    const syncBtn = document.getElementById('btn-manual-sync');
+    if (syncBtn) syncBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> جاري المزامنة...';
+    try {
+        await adminApi('sync_products', { owner: ghOwner, repo: ghRepo, branch: ghBranch || 'main', path: ghPath || 'index.html', products: state.products });
+        showToast('تم تحديث المنتجات على GitHub بنجاح! 🎉');
+    } catch (err) {
+        console.error('GitHub Sync Error:', err);
+        showToast(`خطأ: ${err.message || 'تعذر المزامنة مع GitHub'}`);
+    } finally {
+        githubSyncInProgress = false;
+        if (syncBtn) syncBtn.innerHTML = '<i class="fa-brands fa-github text-sm"></i> مزامنة وحفظ التغييرات على GitHub الآن 🚀';
+    }
+}
+        async function saveAdminSettings() {
+            const whatsappNum = document.getElementById('setting-whatsapp-num')?.value.trim() || '';
+            const googleAppsScriptUrl = document.getElementById('setting-google-apps-url')?.value.trim() || '';
+            const name = document.getElementById('setting-store-name')?.value.trim() || '';
+            const heroTitle = document.getElementById('setting-hero-title')?.value.trim() || '';
+            const heroSub = document.getElementById('setting-hero-sub')?.value.trim() || '';
+            const autoWhatsApp = document.getElementById('setting-auto-whatsapp')?.checked !== false;
+            const heroFile = document.getElementById('setting-hero-file')?.files?.[0];
+
+            if (heroFile) {
+                try {
+                    const heroData = await compressImageFile(heroFile, 1400, 0.82);
+                    state.storeSettings.heroImg = heroData;
+                } catch (err) {
+                    showToast('تعذر تجهيز صورة الهيرو.');
+                    return;
+                }
+            }
+
+            state.storeSettings = {
+                ...state.storeSettings,
+                whatsappNum,
+                googleAppsScriptUrl,
+                autoWhatsApp,
+                name: name || state.storeSettings.name,
+                heroTitle: heroTitle || state.storeSettings.heroTitle,
+                heroSub: heroSub || state.storeSettings.heroSub,
+                heroImg: state.storeSettings.heroImg || ''
+            };
+
+            try {
+                localStorage.setItem('rocket_settings', JSON.stringify(state.storeSettings));
+                applyStoreSettings();
+                showToast('تم حفظ إعدادات المتجر والربط بنجاح 🚀');
+                await syncOrdersFromCloud(false);
+            } catch (e) {
+                console.error('Settings save error:', e);
+                showToast('تعذر حفظ الإعدادات. قد تكون صورة الهيرو كبيرة جداً.');
+            }
+        }
+
+        function compressImageFile(file, maxSize = 1400, quality = 0.82) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+                        const canvas = document.createElement('canvas');
+                        canvas.width = Math.max(1, Math.round(img.width * scale));
+                        canvas.height = Math.max(1, Math.round(img.height * scale));
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = () => reject(new Error('Invalid image'));
+                    img.src = reader.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function deleteOrder(id) {
+            state.orders = state.orders.filter(o => o.id !== id);
+            try {
+                localStorage.setItem('rocket_orders', JSON.stringify(state.orders));
+            } catch (e) {}
+            renderAdminOrders();
+            showToast("تم حذف الطلب من السجل.");
+        }
+
+        function clearAllOrders() {
+            state.orders = [];
+            try {
+                localStorage.setItem('rocket_orders', JSON.stringify(state.orders));
+            } catch (e) {}
+            renderAdminOrders();
+            showToast("تم مسح كافة الطلبات.");
+        }
+
+        // Custom Toast Notification
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'bg-rocket-card border-r-4 border-rocket-red text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 pointer-events-auto transform translate-y-2 transition-all duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-circle-info text-rocket-red text-base"></i> <span>${msg}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+```
